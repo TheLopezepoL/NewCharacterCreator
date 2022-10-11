@@ -14,18 +14,19 @@ public class MeleeWeapon extends aWeapon{
     public MeleeWeapon() {
     }
 
-    @Override
-    public aWeapon clone() {
-        return new MeleeWeapon(this);
-    }
-    @Override
-    public aWeapon deepClone() {
-        return new MeleeWeapon(this);
-    }
 
     @Override
     public double utilizar() {
         return danho;
     }
+
+    public aWeapon clone(){
+        return new MeleeWeapon(this.nombre, this.danho, this.radioExplosion, this.velocidadDeAtaque, this.nivel);
+    };
+
+    @Override
+    public aWeapon deepClone(){
+        return clone();
+    };
 
 }

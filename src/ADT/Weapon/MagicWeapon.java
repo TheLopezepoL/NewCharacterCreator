@@ -17,18 +17,17 @@ public class MagicWeapon extends aWeapon {
     }
 
     @Override
-    public aWeapon clone() {
-        return new MagicWeapon(this);
-    }
-    @Override
-    public aWeapon deepClone() {
-        return new MagicWeapon(this);
-    }
-
-    @Override
     public double utilizar() {
         return -danho;
     }
 
 
+    public aWeapon clone(){
+        return new MagicWeapon(this.nombre, this.alcance, this.danho, this.radioExplosion, this.velocidadDeAtaque, this.nivel);
+    };
+
+    @Override
+    public aWeapon deepClone(){
+        return clone();
+    };
 }

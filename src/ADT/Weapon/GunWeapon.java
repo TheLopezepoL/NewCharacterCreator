@@ -19,16 +19,15 @@ public class GunWeapon extends aWeapon{
     public GunWeapon() {
     }
 
+    @Override
+    public aWeapon clone(){
+        return new GunWeapon(this.nombre, this.alcance, this.danho, this.radioExplosion, this.velocidadDeAtaque, this.nivel);
+    };
 
     @Override
-    public aWeapon clone() {
-        return new GunWeapon(this);
-    }
-
-    @Override
-    public aWeapon deepClone() {
-        return new GunWeapon(this);
-    }
+    public aWeapon deepClone(){
+        return clone();
+    };
 
     @Override
     public double utilizar() {
