@@ -2,6 +2,7 @@ package ADT.Controller;
 
 import java.util.ArrayList;
 
+import ADT.Characters.aPersonaje;
 import ADT.Weapon.aWeapon;
 
 public class controllerSingleton {
