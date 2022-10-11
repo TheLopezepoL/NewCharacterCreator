@@ -2,7 +2,7 @@ package ADT.Weapon;
 
 import java.awt.*;
 
-import ADT.EnumWeapons;
+import ADT.Enums.EnumWeapons;
 
 public class WeaponFactory {
 
