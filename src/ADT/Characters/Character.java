@@ -25,7 +25,7 @@ public class Character implements IPrototype<Character> {
     public Character() {
 
     }
-    public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion, int costo, ArrayList<aWeapon> weapons) {
+    public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion, int costo, ArrayList<aWeapon> weapons,aTipo tipo) {
         this.nombre = nombre;
         this.vida = vida;
         this.nivel = nivel;
@@ -35,13 +35,13 @@ public class Character implements IPrototype<Character> {
         this.armas = weapons;
         this.posX = 0;
         this.posY = 0;
+        this.tipo = tipo;
         //this.imagen = Controlador.getImagen(this.nombre,this.nivel,estado);
-
     }
 
     @Override
     public Character clone(){
-        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,this.armas);
+        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,this.armas,this.tipo);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Character implements IPrototype<Character> {
         for (int i=0; i<=this.armas.size(); i++){
             armasClone.add(this.armas.get(i).clone());
         }
-        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,armasClone);
+        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,armasClone,this.tipo);
     }
 
     public static class BuilderCharacter implements IBuilder<Character> {
@@ -106,11 +106,17 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
+        public BuilderCharacter setTipo (aTipo tipo){
+            //clone arma
+            this.tipo = tipo;
+            return this;
+        }
+
 
 
         @Override
         public Character build(){
-            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas);
+            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo);
         }
 
 

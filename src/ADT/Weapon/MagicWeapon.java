@@ -5,12 +5,12 @@ import java.awt.*;
 public class MagicWeapon extends aWeapon {
 
 
-    public MagicWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel, Image imagen) {
-        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel, imagen);
+    public MagicWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel) {
+        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel);
     }
 
     public MagicWeapon(MagicWeapon magia){
-        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion, magia.velocidadDeAtaque, magia.nivel, magia.imagen);
+        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion, magia.velocidadDeAtaque, magia.nivel);
     }
 
     public MagicWeapon() {
@@ -18,6 +18,10 @@ public class MagicWeapon extends aWeapon {
 
     @Override
     public aWeapon clone() {
+        return new MagicWeapon(this);
+    }
+    @Override
+    public aWeapon deepClone() {
         return new MagicWeapon(this);
     }
 

@@ -1,8 +1,11 @@
 package ADT.Weapon;
 
+import ADT.Characters.Character;
+import ADT.IPrototype;
+
 import java.awt.Image;
 
-public abstract class aWeapon {
+public abstract class aWeapon implements IPrototype<aWeapon> {
         protected String nombre;
         protected double alcance;
         protected double danho;
@@ -12,21 +15,24 @@ public abstract class aWeapon {
         protected boolean activo;
         protected Image imagen;
 
-        public aWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque,int nivel, Image imagen) {
+        public aWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque,int nivel) {
             this.nombre = nombre;
             this.alcance = alcance;
             this.danho = danho;
             this.radioExplosion = radioExplosion;
             this.nivel = nivel;
             this.velocidadDeAtaque = velocidadDeAtaque;
-            this.imagen = imagen;
+            //this.imagen = imagen;
             this.activo = true;
         }
 
         public aWeapon() {
         }
 
+        @Override
         public abstract aWeapon clone();
+        @Override
+        public abstract aWeapon deepClone();
         public abstract double utilizar();
 
         public String getNombre() {

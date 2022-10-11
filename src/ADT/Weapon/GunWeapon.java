@@ -8,12 +8,12 @@ public class GunWeapon extends aWeapon{
     private  int municion; // Balas totoales
 
 
-    public GunWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel, Image imagen) {
-        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel, imagen);
+    public GunWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel) {
+        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel);
     }
 
     public GunWeapon(GunWeapon armaDeFuego){
-        super(armaDeFuego.nombre, armaDeFuego.alcance, armaDeFuego.danho, armaDeFuego.radioExplosion, armaDeFuego.velocidadDeAtaque , armaDeFuego.nivel, armaDeFuego.imagen);
+        super(armaDeFuego.nombre, armaDeFuego.alcance, armaDeFuego.danho, armaDeFuego.radioExplosion, armaDeFuego.velocidadDeAtaque , armaDeFuego.nivel);
     }
 
     public GunWeapon() {
@@ -22,6 +22,11 @@ public class GunWeapon extends aWeapon{
 
     @Override
     public aWeapon clone() {
+        return new GunWeapon(this);
+    }
+
+    @Override
+    public aWeapon deepClone() {
         return new GunWeapon(this);
     }
 
