@@ -75,6 +75,31 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
+        public BuilderCharacter setName(int vida){
+            this.vida = vida;
+            return this;
+        }
+
+        public BuilderCharacter setNivel (int nivel){
+            this.nivel = nivel;
+            return this;
+        }
+
+        public BuilderCharacter setCampos (int campos){
+            this.campos = campos;
+            return this;
+        }
+
+        public BuilderCharacter setNivelAparicion (int nivelAparicion){
+            this.nivelAparicion = nivelAparicion;
+            return this;
+        }
+
+        public BuilderCharacter setCosto (int costo){
+            this.costo = costo;
+            return this;
+        }
+
         public BuilderCharacter addWeapon (aWeapon arma){
             //clone arma
             this.armas.add(arma);
