@@ -1,6 +1,7 @@
 package ADT.Controller;
 
 import ADT.Weapon.CreateWeapon;
+import ADT.Characters.CreateCharacter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,6 +29,15 @@ public class Menu extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 CreateWeapon createWeapon = new CreateWeapon(null);
+            }
+
+
+        });
+
+        createCharacterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CreateCharacter createCharacter = new CreateCharacter(null);
             }
 
 

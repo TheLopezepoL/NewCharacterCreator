@@ -54,6 +54,11 @@ public class controllerSingleton {
     public  ArrayList <aWeapon>  getBaseWeapons(){
         return base_weapons;
     }
+
+    public java.util.ArrayList<Character> getBaseCharacters() {
+        return base_characters;
+    }
+
     //print Armas
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){
@@ -72,7 +77,16 @@ public class controllerSingleton {
     public FlyweightJSON getFlyweightJson(){
         return archivoJSON;
     }
+    
 
+    public aWeapon getArmaByNombre(String nombreArma){
+        for (aWeapon arma : getBaseWeapons()){
+            if(arma.getNombre().equals(nombreArma)){
+                return arma;
+            }
+        }
+        return null;
+    }
 
     //CREAR ARMAS---------------------------------------
     public aWeapon createBaseWeapon(String nombre, double alcance, double danho,double radioExplosion,

@@ -98,7 +98,7 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
-        public BuilderCharacter setName(int vida){
+        public BuilderCharacter setVida(int vida){
             this.vida = vida;
             return this;
         }
@@ -126,6 +126,11 @@ public class Character implements IPrototype<Character> {
         public BuilderCharacter addWeapon (aWeapon arma){
             //clone arma
             this.armas.add(arma);
+            return this;
+        }
+
+        public BuilderCharacter setArmas(ArrayList<aWeapon> arrayArmas){
+            this.armas = arrayArmas;
             return this;
         }
 

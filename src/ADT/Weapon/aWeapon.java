@@ -41,7 +41,11 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
         public aWeapon() {
         }
 
-        @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
         public abstract aWeapon clone();
         @Override
         public abstract aWeapon deepClone();

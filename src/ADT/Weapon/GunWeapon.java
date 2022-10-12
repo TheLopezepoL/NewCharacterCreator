@@ -4,8 +4,6 @@ import java.awt.*;
 
 public class GunWeapon extends aWeapon{
 
-    private int cargador; // Balas dentro del arma
-    private  int municion; // Balas totoales
 
 
     public GunWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel) {
