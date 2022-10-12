@@ -28,23 +28,14 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
             this.velocidadDeAtaque = velocidadDeAtaque;
             this.activo = true;
             this.tipo = tipo;
+            this.imagen = this.getImagen();
         }
-            //this.imagen = imagen;
-        /*
-        public aWeapon(String nombre, double alcance, double danho, double radioExplosion,
-                       double velocidadDeAtaque,int nivel,String tipo,Image imagen) {
-            this.nombre = nombre;
-            this.alcance = alcance;
-            this.danho = danho;
-            this.radioExplosion = radioExplosion;
-            this.nivel = nivel;
-            this.velocidadDeAtaque = velocidadDeAtaque;
-            this.activo = true;
-            this.tipo = tipo;
-            this.imagen = imagen;
-        }*/
 
+        public Image getImagen(){
+            String url = controllerSingleton.getController().getFlyweightJson().datosArma(this.nombre,this.nivel);
+            return controllerSingleton.getController().getFlyweightJson().getImage(url);
 
+        }
 
         public void updateImagen(){
             String url = controllerSingleton.getController().getFlyweightJson().datosArma(this.nombre,this.nivel);
