@@ -1,4 +1,72 @@
 package ADT.ImageFlyweight;
+import ADT.State;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import javax.annotation.processing.Filer;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class FlyweightJSON {
+
+    private static JSONParser parser;
+    private static FileReader reader;
+
+    private static JSONObject json;
+
+    public FlyweightJSON() throws FileNotFoundException {
+        parser = new JSONParser();
+        reader = new FileReader(".\\src\\configImagenes.json");
+
+    }
+    public static JSONParser getJsonParser(){
+        return parser;
+    }
+    public static FileReader getReader(){
+        return reader;
+    }
+    public static JSONObject getJson(){
+        return json;
+    }
+
+    public static String datos(String pNombre, int pNivel, State pEstado)  {
+
+        JSONParser jsonParser = parser;
+        FileReader lector = reader;
+        JSONObject lista = null;
+        try {
+            lista = (JSONObject) jsonParser.parse(lector);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject personaje =  (JSONObject) lista.get(pNombre);
+        JSONObject nivel =  (JSONObject) personaje.get(Integer.toString(pNivel));
+        String url = nivel.get(pEstado.name()).toString();
+        return url;
+    }
+
+    public static Image getImage(String url){
+        BufferedImage imagen =null;
+        try{
+            //Image es clase abstracta de java, podemos retornar bufferedImage
+            //y ponerlo en atributo Image de personaje / arma
+            imagen = ImageIO.read(new File(url));
+            //System.out.println(Integer.toString(imagen.getHeight()));
+            //System.out.println(imagen.toString());
+
+        }catch (IOException e){
+            System.out.println("Imagen no encontrada, revisar formato");
+
+        }
+        return imagen;
+    }
+
 }

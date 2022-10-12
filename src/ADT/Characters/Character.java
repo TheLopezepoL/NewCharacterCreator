@@ -1,11 +1,14 @@
 package ADT.Characters;
 
+import ADT.Controller.controllerSingleton;
 import ADT.IBuilder;
 import ADT.IPrototype;
 import ADT.State;
 import ADT.Weapon.aWeapon;
+import org.json.simple.parser.ParseException;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Character implements IPrototype<Character> {
@@ -29,7 +32,7 @@ public class Character implements IPrototype<Character> {
 
     }
     public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion,
-                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado) {
+                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado)  {
         this.nombre = nombre;
         this.vida = vida;
         this.nivel = nivel;
@@ -41,11 +44,23 @@ public class Character implements IPrototype<Character> {
         this.posY = 0;
         this.tipo = tipo;
         this.estado = estado;
-        //this.imagen = Controlador.getImagen(this.nombre,this.nivel,estado);
+        this.imagen = this.getImagen();
+    }
+
+    public void updateImagen(){
+        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre,this.nivel,this.estado);
+        this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
+    }
+    public void setImagen(Image imagen){
+        this.imagen = imagen;
+    }
+    public Image getImagen(){
+        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre,this.nivel,this.estado);
+        return controllerSingleton.getController().getFlyweightJson().getImage(url);
     }
 
     @Override
-    public Character clone(){
+    public Character clone() {
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
                 this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado);
     }
@@ -124,6 +139,12 @@ public class Character implements IPrototype<Character> {
             this.estado = estado;
             return this;
         }
+
+        /* no hace falta ya que imagen se setea automaticamente en el constructor.
+        public BuilderCharacter setImagen(Image imagen){
+            this.imagen = imagen;
+            return this;
+        }*/
 
 
 

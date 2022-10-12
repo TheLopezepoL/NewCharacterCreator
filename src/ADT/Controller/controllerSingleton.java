@@ -1,11 +1,13 @@
 package ADT.Controller;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import ADT.Characters.Character;
 import ADT.Characters.TypesFactory;
 import ADT.Enums.EnumWeapons;
+import ADT.ImageFlyweight.FlyweightJSON;
 import ADT.Weapon.WeaponFactory;
 import ADT.Weapon.aWeapon;
 
@@ -20,6 +22,8 @@ public class controllerSingleton {
     private ArrayList <Character> base_characters;
     private ArrayList <aWeapon> base_weapons;
 
+    private FlyweightJSON archivoJSON;
+
     //constructor privado
     private controllerSingleton (){
         generated_characters = new ArrayList <Character> ();
@@ -28,6 +32,11 @@ public class controllerSingleton {
         //FACTORY
         factoryWeapons = new WeaponFactory();
         factoryTypes = new TypesFactory();
+        try {
+            archivoJSON = new FlyweightJSON();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //getInstance
@@ -57,6 +66,11 @@ public class controllerSingleton {
                     + " Nivel: "+arma.nivel
                     + " Tipo: "+arma.tipo) ;
         }
+    }
+
+    //get FlyweightJson
+    public FlyweightJSON getFlyweightJson(){
+        return archivoJSON;
     }
 
 
