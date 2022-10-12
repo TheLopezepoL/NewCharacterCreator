@@ -1,19 +1,24 @@
 package ADT.Weapon;
 
+import ADT.Controller.MainController;
+import ADT.Enums.EnumWeapons;
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class CreateWeapon extends JDialog{
-    private JTextField textField1;
-    private JSpinner spinner1;
-    private JSpinner spinner2;
-    private JSpinner spinner3;
-    private JSpinner spinner4;
+    private JTextField txtName;
+    private JSpinner spAlcance;
+    private JSpinner spDanho;
+    private JSpinner spRadio;
+    private JSpinner spVelocidad;
     private JButton createButton;
     private JButton cancelButton;
-    private JComboBox comboBox1;
+    private JComboBox cbTipo;
     private JPanel createWeaponPanel;
 
     public CreateWeapon(JFrame parent){
@@ -23,11 +28,39 @@ public class CreateWeapon extends JDialog{
         setMinimumSize(new Dimension(480,474));
         setModal(true);
         setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+        cbTipo.setModel(new DefaultComboBoxModel<>(EnumWeapons.values()));
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = txtName.getText();
+                int alcance = (Integer) spAlcance.getValue();
+                int danho = (Integer) spDanho.getValue();
+                int velocidad = (Integer) spVelocidad.getValue();
+                int radio = (Integer) spRadio.getValue();
+                EnumWeapons tipo = (EnumWeapons) cbTipo.getSelectedItem();
 
+                aWeapon arma = MainController.controlador.createBaseWeapon(name,alcance,danho,radio,velocidad,1,tipo);
+                if (arma != null){
+                    MainController.controlador.getBaseWeapons().add(arma);
+                    JOptionPane.showMessageDialog(null, "Success");
+                    MainController.controlador.printArmas();
+                    dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                    dispose();
+                }
 
-
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
         setVisible(true);
+
     }
 }

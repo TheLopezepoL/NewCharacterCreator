@@ -27,8 +27,6 @@ public class Menu extends JDialog{
         createWeaponButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                System.out.println("holaa");
                 CreateWeapon createWeapon = new CreateWeapon(null);
             }
 

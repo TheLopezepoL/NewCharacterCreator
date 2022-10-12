@@ -12,10 +12,11 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
         protected double radioExplosion;
         protected double velocidadDeAtaque;
         protected int nivel;
+        protected String tipo;
         protected boolean activo;
         protected Image imagen;
 
-        public aWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque,int nivel) {
+        public aWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque,int nivel,String tipo) {
             this.nombre = nombre;
             this.alcance = alcance;
             this.danho = danho;
@@ -24,6 +25,7 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
             this.velocidadDeAtaque = velocidadDeAtaque;
             //this.imagen = imagen;
             this.activo = true;
+            this.tipo = tipo;
         }
 
         public aWeapon() {
@@ -54,6 +56,9 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
         public void setDanho(double danho) {
             this.danho = danho;
         }
+        public double getDanho() {
+        return danho;
+    }
 
         public double getRadioExplosion() {
             return radioExplosion;
@@ -74,6 +79,7 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
         public int getNivel() {
             return nivel;
         }
+        public String getTipo(){return tipo;}
 
         public void setNivel(int nivel) {
             this.nivel = nivel;

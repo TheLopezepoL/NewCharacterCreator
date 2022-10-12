@@ -5,11 +5,11 @@ import java.awt.*;
 public class MeleeWeapon extends aWeapon{
 
     public MeleeWeapon(String nombre, double danho, double radioExplosion, double velocidadDeAtaque, int nivel) {
-        super(nombre, 1, danho, radioExplosion, velocidadDeAtaque, nivel);
+        super(nombre, 1, danho, radioExplosion, velocidadDeAtaque, nivel,"BLANCA");
     }
 
     public MeleeWeapon(MeleeWeapon armaBlanca){
-        super(armaBlanca.nombre, armaBlanca.alcance, armaBlanca.danho, armaBlanca.radioExplosion, armaBlanca.velocidadDeAtaque, armaBlanca.nivel);
+        super(armaBlanca.nombre, armaBlanca.alcance, armaBlanca.danho, armaBlanca.radioExplosion, armaBlanca.velocidadDeAtaque, armaBlanca.nivel,"BLANCA");
     }
     public MeleeWeapon() {
     }

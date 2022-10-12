@@ -26,7 +26,7 @@
           <text value="Name:"/>
         </properties>
       </component>
-      <component id="95f88" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="95f88" class="javax.swing.JTextField" binding="txtName">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -43,7 +43,7 @@
           <text value="Alcance:"/>
         </properties>
       </component>
-      <component id="59a74" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+      <component id="59a74" class="javax.swing.JSpinner" binding="spAlcance">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -58,7 +58,7 @@
           <text value="Daño/Efecto:"/>
         </properties>
       </component>
-      <component id="5c05d" class="javax.swing.JSpinner" binding="spinner2" default-binding="true">
+      <component id="5c05d" class="javax.swing.JSpinner" binding="spDanho">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -73,7 +73,7 @@
           <text value="Radio de Efecto:"/>
         </properties>
       </component>
-      <component id="78873" class="javax.swing.JSpinner" binding="spinner3" default-binding="true">
+      <component id="78873" class="javax.swing.JSpinner" binding="spRadio">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -88,7 +88,7 @@
           <text value="Velocidad de Ataque:"/>
         </properties>
       </component>
-      <component id="b4f20" class="javax.swing.JSpinner" binding="spinner4" default-binding="true">
+      <component id="b4f20" class="javax.swing.JSpinner" binding="spVelocidad">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -133,7 +133,7 @@
           <text value="Tipo:"/>
         </properties>
       </component>
-      <component id="cf0e3" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="cf0e3" class="javax.swing.JComboBox" binding="cbTipo">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

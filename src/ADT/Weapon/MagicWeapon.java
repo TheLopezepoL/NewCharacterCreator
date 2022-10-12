@@ -6,11 +6,11 @@ public class MagicWeapon extends aWeapon {
 
 
     public MagicWeapon(String nombre, double alcance, double danho, double radioExplosion, double velocidadDeAtaque, int nivel) {
-        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel);
+        super(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel,"MAGIA");
     }
 
     public MagicWeapon(MagicWeapon magia){
-        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion, magia.velocidadDeAtaque, magia.nivel);
+        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion, magia.velocidadDeAtaque, magia.nivel,"MAGIA");
     }
 
     public MagicWeapon() {

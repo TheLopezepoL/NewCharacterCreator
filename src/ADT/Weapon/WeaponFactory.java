@@ -5,9 +5,8 @@ import java.awt.*;
 import ADT.Enums.EnumWeapons;
 
 public class WeaponFactory {
-
     public  aWeapon FabricarWeapon(String nombre, double alcance, double danho
-            , double velocidadAtaque, double radioExplosion, double velocidadDeAtaque, int nivel, EnumWeapons tipoArma){
+            , double radioExplosion, double velocidadDeAtaque, int nivel, EnumWeapons tipoArma){
 
         switch (tipoArma){
             case FUEGO:
@@ -17,8 +16,7 @@ public class WeaponFactory {
             case MAGIA:
                 return new MagicWeapon(nombre, alcance, danho, radioExplosion, velocidadDeAtaque, nivel);
             default:
-                throw new IllegalArgumentException("Tipo de arma no existente");
+                return null;
         }
-
     }
 }
