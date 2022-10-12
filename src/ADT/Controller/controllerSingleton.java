@@ -49,13 +49,13 @@ public class controllerSingleton {
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){
             aWeapon arma = base_weapons.get(i);
-            System.out.println(" Nombre: "+arma.getNombre()
-                    + " Alcance: "+ arma.getAlcance()
-                    + " Dano: "+ arma.getDanho()
-                    + " Radio: "+arma.getRadioExplosion()
-                    + " Velocidad: "+arma.getVelocidadDeAtaque()
-                    + " Nivel: "+arma.getNivel()
-                    + " Tipo: "+arma.getTipo()) ;
+            System.out.println(" Nombre: "+arma.nombre
+                    + " Alcance: "+ arma.alcance
+                    + " Dano: "+ arma.danho
+                    + " Radio: "+arma.radioExplosion
+                    + " Velocidad: "+arma.velocidadDeAtaque
+                    + " Nivel: "+arma.nivel
+                    + " Tipo: "+arma.tipo) ;
         }
     }
 
