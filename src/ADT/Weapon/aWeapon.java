@@ -17,10 +17,9 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
         public String tipo;
         public boolean activo;
         public Image imagen;
-        public State estado;
 
         public aWeapon(String nombre, double alcance, double danho, double radioExplosion,
-                       double velocidadDeAtaque,int nivel,String tipo,State estado) {
+                       double velocidadDeAtaque,int nivel,String tipo) {
             this.nombre = nombre;
             this.alcance = alcance;
             this.danho = danho;
@@ -29,14 +28,28 @@ public abstract class aWeapon implements IPrototype<aWeapon> {
             this.velocidadDeAtaque = velocidadDeAtaque;
             this.activo = true;
             this.tipo = tipo;
-            this.estado = estado;
-            //this.imagen = this.getImagen();
         }
+            //this.imagen = imagen;
         /*
-        public Image getImagen(){
-            String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre,this.nivel,this.estado);
-            return controllerSingleton.getController().getFlyweightJson().getImage(url);
+        public aWeapon(String nombre, double alcance, double danho, double radioExplosion,
+                       double velocidadDeAtaque,int nivel,String tipo,Image imagen) {
+            this.nombre = nombre;
+            this.alcance = alcance;
+            this.danho = danho;
+            this.radioExplosion = radioExplosion;
+            this.nivel = nivel;
+            this.velocidadDeAtaque = velocidadDeAtaque;
+            this.activo = true;
+            this.tipo = tipo;
+            this.imagen = imagen;
         }*/
+
+
+
+        public void updateImagen(){
+            String url = controllerSingleton.getController().getFlyweightJson().datosArma(this.nombre,this.nivel);
+            this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
+        }
 
         public aWeapon() {
         }

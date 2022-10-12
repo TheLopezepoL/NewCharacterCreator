@@ -32,7 +32,7 @@ public class Character implements IPrototype<Character> {
 
     }
     public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion,
-                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado)  {
+                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado,Image imagen)  {
         this.nombre = nombre;
         this.vida = vida;
         this.nivel = nivel;
@@ -44,25 +44,23 @@ public class Character implements IPrototype<Character> {
         this.posY = 0;
         this.tipo = tipo;
         this.estado = estado;
-        this.imagen = this.getImagen();
-    }
-
-    public void updateImagen(){
-        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre,this.nivel,this.estado);
-        this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
-    }
-    public void setImagen(Image imagen){
         this.imagen = imagen;
     }
-    public Image getImagen(){
-        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre,this.nivel,this.estado);
-        return controllerSingleton.getController().getFlyweightJson().getImage(url);
+
+
+
+
+    public void updateImagen() {
+        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre, this.nivel, this.estado);
+        this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
     }
+
+
 
     @Override
     public Character clone() {
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
-                this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado);
+                this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado,this.imagen);
     }
 
     @Override
@@ -72,7 +70,7 @@ public class Character implements IPrototype<Character> {
             armasClone.add(this.armas.get(i).clone());
         }
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
-                this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado);
+                this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado,this.imagen);
     }
 
     public static class BuilderCharacter implements IBuilder<Character> {
@@ -145,17 +143,18 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
-        /* no hace falta ya que imagen se setea automaticamente en el constructor.
-        public BuilderCharacter setImagen(Image imagen){
-            this.imagen = imagen;
+
+        public BuilderCharacter setImagen(){
+            String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre, this.nivel, this.estado);
+            this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
             return this;
-        }*/
+        }
 
 
 
         @Override
         public Character build(){
-            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado);
+            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado,imagen);
         }
 
 

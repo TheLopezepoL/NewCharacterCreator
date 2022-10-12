@@ -1,0 +1,36 @@
+{
+  "Sniper": {
+    "1":{
+      "DEFAULT": ".\\src\\CharacterAppearance\\sniper1Default.png",
+      "MOVE": ".\\src\\CharacterAppearance\\sniper1Move.png",
+      "ATTACK": ".\\src\\CharacterAppearance\\sniper1Attack.png",
+      "DEAD": ".\\src\\CharacterAppearance\\sniper1Dead.png"
+    },
+
+    "2":{
+      "Default": ".\\src\\CharacterAppearance\\sniper2Default.png",
+      "Move": ".\\src\\CharacterAppearance\\sniper2Move.png",
+      "Attack": ".\\src\\CharacterAppearance\\sniper2Attack.png",
+      "Dead": ".\\src\\CharacterAppearance\\sniper2Dead.png"
+    }
+
+  },
+
+  "Tank": {
+    "1":{
+      "Default": ".\\src\\CharacterAppearance\\tank1Default.png",
+      "Move": ".\\src\\CharacterAppearance\\tank1Move.png",
+      "Attack": ".\\src\\CharacterAppearance\\tank1Attack.png",
+      "Dead": ".\\src\\CharacterAppearance\\tank1Dead.png"
+    },
+
+    "2":{
+      "Default": ".\\src\\CharacterAppearance\\tank2Default.png",
+      "Move": ".\\src\\CharacterAppearance\\tank2Move.png",
+      "Attack": ".\\src\\CharacterAppearance\\tank2Attack.png",
+      "Dead": ".\\src\\CharacterAppearance\\tank2Dead.png"
+    }
+
+  }
+
+}
