@@ -2,6 +2,7 @@ package ADT.Characters;
 
 import ADT.IBuilder;
 import ADT.IPrototype;
+import ADT.State;
 import ADT.Weapon.aWeapon;
 
 import java.awt.*;
@@ -22,10 +23,13 @@ public class Character implements IPrototype<Character> {
 
     protected aTipo tipo;
 
+    protected State estado;
+
     public Character() {
 
     }
-    public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion, int costo, ArrayList<aWeapon> weapons,aTipo tipo) {
+    public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion,
+                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado) {
         this.nombre = nombre;
         this.vida = vida;
         this.nivel = nivel;
@@ -36,12 +40,14 @@ public class Character implements IPrototype<Character> {
         this.posX = 0;
         this.posY = 0;
         this.tipo = tipo;
+        this.estado = estado;
         //this.imagen = Controlador.getImagen(this.nombre,this.nivel,estado);
     }
 
     @Override
     public Character clone(){
-        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,this.armas,this.tipo);
+        return new Character(this.nombre,this.vida, this.nivel,this.campos,
+                this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado);
     }
 
     @Override
@@ -50,7 +56,8 @@ public class Character implements IPrototype<Character> {
         for (int i=0; i<=this.armas.size(); i++){
             armasClone.add(this.armas.get(i).clone());
         }
-        return new Character(this.nombre,this.vida, this.nivel,this.campos,this.nivelAparicion,this.costo,armasClone,this.tipo);
+        return new Character(this.nombre,this.vida, this.nivel,this.campos,
+                this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado);
     }
 
     public static class BuilderCharacter implements IBuilder<Character> {
@@ -67,6 +74,7 @@ public class Character implements IPrototype<Character> {
         private int posY;
 
         private aTipo tipo;
+        private State estado;
 
         public BuilderCharacter (){}
 
@@ -112,11 +120,16 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
+        public BuilderCharacter setEstado(State estado){
+            this.estado = estado;
+            return this;
+        }
+
 
 
         @Override
         public Character build(){
-            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo);
+            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado);
         }
 
 
