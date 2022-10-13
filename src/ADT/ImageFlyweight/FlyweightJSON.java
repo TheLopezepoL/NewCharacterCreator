@@ -19,6 +19,8 @@ public class FlyweightJSON {
     hacer un new a cada uno de esos cada vez que quisieramos obtener una imagen
      */
     private static JSONParser parser;
+
+    private static JSONParser parserArmas;
     private static FileReader reader;
     private static FileReader weaponsReader;
 
@@ -26,6 +28,7 @@ public class FlyweightJSON {
 
     public FlyweightJSON() throws FileNotFoundException {
         parser = new JSONParser();
+        parserArmas = new JSONParser();
         reader = new FileReader(".\\src\\ImagenesPersonaje.json");
         weaponsReader = new FileReader(".\\src\\ImagenesArma.json");
 
@@ -34,8 +37,13 @@ public class FlyweightJSON {
 
     public static String datos(String pNombre, int pNivel, State pEstado)  {
 
-        JSONParser jsonParser = parser;
-        FileReader lector = reader;
+        JSONParser jsonParser = new JSONParser();
+        FileReader lector = null;
+        try {
+            lector = new FileReader(".\\src\\ImagenesPersonaje.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         JSONObject lista = null;
         try {
             lista = (JSONObject) jsonParser.parse(lector);
@@ -52,11 +60,18 @@ public class FlyweightJSON {
 
     public static String datosArma(String pNombre, int pNivel)  {
 
-        JSONParser jsonParser = parser;
-        FileReader lector = weaponsReader;
-        JSONObject lista;
+        JSONParser jsonParser = new JSONParser();
+        FileReader lector = null;
         try {
+            lector = new FileReader(".\\src\\ImagenesArma.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject lista = null;
+        try {
+
             lista = (JSONObject) jsonParser.parse(lector);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ParseException e) {

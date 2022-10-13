@@ -87,7 +87,7 @@ public class controllerSingleton {
     public aWeapon getArmaByNombre(String nombreArma){
         for (aWeapon arma : getBaseWeapons()){
             if(arma.getNombre().equals(nombreArma)){
-                return arma.clone();
+                return arma;
             }
         }
         return null;

@@ -32,7 +32,7 @@ public class CreateCharacter extends JDialog {
 
     public CreateCharacter(JFrame parent){
         super(parent);
-        setTitle("Create Weapon");
+        setTitle("Create Character");
         setContentPane(createCharacterPanel);
         setMinimumSize(new Dimension(480,474));
         setModal(true);
