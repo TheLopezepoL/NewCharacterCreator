@@ -19,6 +19,7 @@ public class controllerSingleton {
     private WeaponFactory factoryWeapons;
     private TypesFactory factoryTypes;
     private ArrayList <Character> generated_characters;
+
     private ArrayList <Character> base_characters;
     private ArrayList <aWeapon> base_weapons;
 
@@ -59,6 +60,10 @@ public class controllerSingleton {
         return base_characters;
     }
 
+    public java.util.ArrayList<Character> getGeneratedCharacters() {
+        return generated_characters;
+    }
+
     //print Armas
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){
@@ -82,7 +87,16 @@ public class controllerSingleton {
     public aWeapon getArmaByNombre(String nombreArma){
         for (aWeapon arma : getBaseWeapons()){
             if(arma.getNombre().equals(nombreArma)){
-                return arma;
+                return arma.clone();
+            }
+        }
+        return null;
+    }
+
+    public Character getCharacterByNombre(String nombrePersonaje){
+        for (Character personaje : getBaseCharacters()){
+            if(personaje.getNombre().equals(nombrePersonaje)){
+                return personaje.deepClone();
             }
         }
         return null;

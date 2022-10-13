@@ -54,7 +54,7 @@ public class FlyweightJSON {
 
         JSONParser jsonParser = parser;
         FileReader lector = weaponsReader;
-        JSONObject lista = null;
+        JSONObject lista;
         try {
             lista = (JSONObject) jsonParser.parse(lector);
         } catch (IOException e) {

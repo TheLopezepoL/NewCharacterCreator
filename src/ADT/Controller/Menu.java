@@ -1,5 +1,6 @@
 package ADT.Controller;
 
+import ADT.Characters.CloneCharacter;
 import ADT.Weapon.CreateWeapon;
 import ADT.Characters.CreateCharacter;
 
@@ -13,6 +14,7 @@ public class Menu extends JDialog{
     private JButton createCharacterButton;
     private JButton playButton;
     private JPanel menuPanel;
+    private JButton cloneCharacterButton;
 
     public Menu(JFrame parent){
         super(parent);
@@ -39,6 +41,19 @@ public class Menu extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 CreateCharacter createCharacter = new CreateCharacter(null);
             }
+
+
+
+
+        });
+
+        cloneCharacterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CloneCharacter cloneCharacter = new CloneCharacter(null);
+            }
+
+
 
 
         });

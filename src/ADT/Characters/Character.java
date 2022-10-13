@@ -73,6 +73,10 @@ public class Character implements IPrototype<Character> {
                 this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado,this.imagen);
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
         private double vida;
@@ -127,12 +131,6 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
-        public BuilderCharacter setArmas(ArrayList<aWeapon> arrayArmas){
-            for (aWeapon arma : arrayArmas){
-                addWeapon(arma);
-            }
-            return this;
-        }
 
         public BuilderCharacter setTipo (aTipo tipo){
             //clone arma

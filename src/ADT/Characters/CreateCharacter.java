@@ -31,7 +31,6 @@ public class CreateCharacter extends JDialog {
     private JPanel createCharacterPanel;
 
     public CreateCharacter(JFrame parent){
-
         super(parent);
         setTitle("Create Weapon");
         setContentPane(createCharacterPanel);

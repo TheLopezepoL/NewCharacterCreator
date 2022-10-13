@@ -19,7 +19,7 @@ public class GunWeapon extends aWeapon{
 
     @Override
     public aWeapon clone(){
-        return new GunWeapon(this.nombre, this.alcance, this.danho, this.radioExplosion, this.velocidadDeAtaque, this.nivel);
+        return new GunWeapon(this);
     };
 
     @Override
