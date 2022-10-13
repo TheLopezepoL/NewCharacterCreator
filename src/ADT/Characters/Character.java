@@ -51,8 +51,8 @@ public class Character implements IPrototype<Character> {
 
 
     public void updateImagen() {
-        String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre, this.nivel, this.estado);
-        this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
+        String url = controllerSingleton.getController().datos(this.nombre, this.nivel, this.estado);
+        this.imagen = controllerSingleton.getController().getImage(url);
     }
 
 
@@ -145,8 +145,8 @@ public class Character implements IPrototype<Character> {
 
 
         public BuilderCharacter setImagen(){
-            String url = controllerSingleton.getController().getFlyweightJson().datos(this.nombre, this.nivel, this.estado);
-            this.imagen = controllerSingleton.getController().getFlyweightJson().getImage(url);
+            String url = controllerSingleton.getController().datos(this.nombre, this.nivel, this.estado);
+            this.imagen = controllerSingleton.getController().getImage(url);
             return this;
         }
 

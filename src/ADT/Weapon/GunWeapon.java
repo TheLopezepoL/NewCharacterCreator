@@ -11,7 +11,8 @@ public class GunWeapon extends aWeapon{
     }
 
     public GunWeapon(GunWeapon armaDeFuego){
-        super(armaDeFuego.nombre, armaDeFuego.alcance, armaDeFuego.danho, armaDeFuego.radioExplosion, armaDeFuego.velocidadDeAtaque , armaDeFuego.nivel, "FUEGO");
+        super(armaDeFuego.nombre, armaDeFuego.alcance, armaDeFuego.danho, armaDeFuego.radioExplosion,
+                armaDeFuego.velocidadDeAtaque , armaDeFuego.nivel, "FUEGO", armaDeFuego.imagen);
     }
 
     public GunWeapon() {

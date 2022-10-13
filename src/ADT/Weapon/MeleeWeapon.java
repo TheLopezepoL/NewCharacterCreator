@@ -9,7 +9,8 @@ public class MeleeWeapon extends aWeapon{
     }
 
     public MeleeWeapon(MeleeWeapon armaBlanca){
-        super(armaBlanca.nombre, armaBlanca.alcance, armaBlanca.danho, armaBlanca.radioExplosion, armaBlanca.velocidadDeAtaque, armaBlanca.nivel,"BLANCA");
+        super(armaBlanca.nombre, armaBlanca.alcance, armaBlanca.danho, armaBlanca.radioExplosion,
+                armaBlanca.velocidadDeAtaque, armaBlanca.nivel,"BLANCA",armaBlanca.imagen);
     }
     public MeleeWeapon() {
     }

@@ -10,7 +10,8 @@ public class MagicWeapon extends aWeapon {
     }
 
     public MagicWeapon(MagicWeapon magia){
-        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion, magia.velocidadDeAtaque, magia.nivel,"MAGIA");
+        super(magia.nombre, magia.alcance, magia.danho, magia.radioExplosion,
+                magia.velocidadDeAtaque, magia.nivel,"MAGIA", magia.imagen);
     }
 
     public MagicWeapon() {

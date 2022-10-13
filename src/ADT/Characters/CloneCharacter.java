@@ -23,7 +23,7 @@ public class CloneCharacter extends JDialog {
 
     public CloneCharacter(JFrame parent){
         super(parent);
-        setTitle("Create Weapon");
+        setTitle("Clone character");
         setContentPane(cloneCharacterPanel);
         setMinimumSize(new Dimension(480,474));
         setModal(true);
@@ -44,7 +44,7 @@ public class CloneCharacter extends JDialog {
                 Character clonPersonaje = personajeAClonar.deepClone();
                 MainController.controlador.getGeneratedCharacters().add(clonPersonaje);
                 }
-            ArrayList<Character> hola = MainController.controlador.getGeneratedCharacters();
+            //ArrayList<Character> hola = MainController.controlador.getGeneratedCharacters();
             JOptionPane.showMessageDialog(null, "Success");
             dispose();
             }

@@ -79,6 +79,7 @@ public class CreateCharacter extends JDialog {
                 if (nuevoCharacter != null){
                     MainController.controlador.getBaseCharacters().add(nuevoCharacter);
                     JOptionPane.showMessageDialog(null, "Success");
+
                     dispose();
                 }
                 else{
