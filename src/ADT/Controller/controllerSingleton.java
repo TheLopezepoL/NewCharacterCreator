@@ -20,6 +20,8 @@ import org.json.simple.parser.ParseException;
 
 import javax.imageio.ImageIO;
 
+import javax.swing.*;
+
 public class controllerSingleton {
     //static reference to the single object
     private static controllerSingleton myController;
@@ -36,6 +38,12 @@ public class controllerSingleton {
 
     private static JSONParser parser;
     private static JSONParser parserArmas;
+
+    private Character[][] tablero = {{null, null, null, null},
+                                    {null, null, null, null},
+                                    {null, null, null, null},
+                                    {null, null, null, null}};
+
 
     //constructor privado
     private controllerSingleton (){
@@ -61,6 +69,9 @@ public class controllerSingleton {
     //get Weapons Factory
     public  WeaponFactory getFactoryWeapons(){
         return factoryWeapons;
+    }
+    public Character[][] getTablero(){
+        return tablero;
     }
     public  ArrayList <aWeapon>  getBaseWeapons(){
         return base_weapons;
