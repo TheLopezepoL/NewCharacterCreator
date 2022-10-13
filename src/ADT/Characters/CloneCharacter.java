@@ -44,6 +44,7 @@ public class CloneCharacter extends JDialog {
                 Character clonPersonaje = personajeAClonar.deepClone();
                 MainController.controlador.getGeneratedCharacters().add(clonPersonaje);
                 }
+            ArrayList<Character> hola = MainController.controlador.getGeneratedCharacters();
             JOptionPane.showMessageDialog(null, "Success");
             dispose();
             }

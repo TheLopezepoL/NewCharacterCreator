@@ -66,7 +66,7 @@ public class Character implements IPrototype<Character> {
     @Override
     public Character deepClone(){
         ArrayList<aWeapon> armasClone = new ArrayList<aWeapon>();
-        for (int i=0; i<=this.armas.size(); i++){
+        for (int i=0; i<this.armas.size(); i++){
             armasClone.add(this.armas.get(i).clone());
         }
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
