@@ -2,6 +2,7 @@ package ADT.Characters;
 
 import ADT.Controller.MainController;
 import ADT.Enums.EnumCharacters;
+import ADT.State;
 import ADT.Weapon.aWeapon;
 import com.sun.tools.javac.Main;
 
@@ -25,7 +26,6 @@ public class CreateCharacter extends JDialog {
     private JButton createButton;
     private JButton cancelButton;
 
-    protected ArrayList<aWeapon> armasPersonaje;
 
     protected Character.BuilderCharacter builderCharacter;
     private JPanel createCharacterPanel;
@@ -74,6 +74,8 @@ public class CreateCharacter extends JDialog {
                         .setCosto(valorPersonaje)
                         .setCampos(camposPersonaje)
                         .setNivelAparicion(nivelAparicionPersonaje)
+                        .setEstado(State.DEFAULT)
+                        .setImagen()
                         .build();
 
                 if (nuevoCharacter != null){

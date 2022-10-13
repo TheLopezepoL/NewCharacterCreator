@@ -11,6 +11,8 @@ import ADT.ImageFlyweight.FlyweightJSON;
 import ADT.Weapon.WeaponFactory;
 import ADT.Weapon.aWeapon;
 
+import javax.swing.*;
+
 public class controllerSingleton {
     //static reference to the single object
     private static controllerSingleton myController;
@@ -24,6 +26,12 @@ public class controllerSingleton {
     private ArrayList <aWeapon> base_weapons;
 
     private FlyweightJSON archivoJSON;
+
+    private Character[][] tablero = {{null, null, null, null},
+                                    {null, null, null, null},
+                                    {null, null, null, null},
+                                    {null, null, null, null}};
+
 
     //constructor privado
     private controllerSingleton (){
@@ -51,6 +59,9 @@ public class controllerSingleton {
     //get Weapons Factory
     public  WeaponFactory getFactoryWeapons(){
         return factoryWeapons;
+    }
+    public Character[][] getTablero(){
+        return tablero;
     }
     public  ArrayList <aWeapon>  getBaseWeapons(){
         return base_weapons;

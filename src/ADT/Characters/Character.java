@@ -76,6 +76,7 @@ public class Character implements IPrototype<Character> {
     public String getNombre(){
         return nombre;
     }
+    public Image getImagen(){return imagen;}
 
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
