@@ -9,6 +9,15 @@
     }
 
   },
+  "ghost": {
+    "1":{
+      "DEFAULT": ".\\src\\CharacterAppearance\\ghost1Default.png",
+      "MOVE": ".\\src\\CharacterAppearance\\ghost1Move.png",
+      "ATTACK": ".\\src\\CharacterAppearance\\ghost1Attack.png",
+      "DEAD": ".\\src\\CharacterAppearance\\ghost1Dead.png"
+    }
+
+  },
   "Sniper": {
     "1":{
       "DEFAULT": ".\\src\\CharacterAppearance\\sniper1Default.png",
