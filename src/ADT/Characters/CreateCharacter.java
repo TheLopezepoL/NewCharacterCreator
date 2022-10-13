@@ -26,6 +26,8 @@ public class CreateCharacter extends JDialog {
     private JButton cancelButton;
 
     protected ArrayList<aWeapon> armasPersonaje;
+
+    protected Character.BuilderCharacter builderCharacter;
     private JPanel createCharacterPanel;
 
     public CreateCharacter(JFrame parent){
@@ -37,7 +39,8 @@ public class CreateCharacter extends JDialog {
         setModal(true);
         setLocationRelativeTo(parent);
 
-        armasPersonaje = new ArrayList<aWeapon>();
+        //armasPersonaje = new ArrayList<aWeapon>();
+        builderCharacter = new Character.BuilderCharacter();
 
         comboBoxTipo.setModel(new DefaultComboBoxModel<>(EnumCharacters.values()));
 
@@ -49,7 +52,8 @@ public class CreateCharacter extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nombreArmaAdd = comboBoxArma.getSelectedItem().toString();
-                armasPersonaje.add(MainController.controlador.getArmaByNombre(nombreArmaAdd));
+                aWeapon armaAdd = MainController.controlador.getArmaByNombre(nombreArmaAdd);
+                builderCharacter.addWeapon(armaAdd);
             }
         });
 
@@ -65,13 +69,12 @@ public class CreateCharacter extends JDialog {
                 int camposPersonaje = (Integer) spinnerCampos.getValue();
                 int nivelAparicionPersonaje = (Integer) spinnerAparicion.getValue();
 
-                Character nuevoCharacter = new Character.BuilderCharacter().setName(nombrePersonaje)
+                Character nuevoCharacter = builderCharacter.setName(nombrePersonaje)
                         .setVida(vidaPersonaje)
                         .setNivel(nivelPersonaje)
                         .setCosto(valorPersonaje)
                         .setCampos(camposPersonaje)
                         .setNivelAparicion(nivelAparicionPersonaje)
-                        .setArmas(armasPersonaje)
                         .build();
 
                 if (nuevoCharacter != null){

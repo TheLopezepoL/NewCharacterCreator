@@ -81,7 +81,7 @@ public class Character implements IPrototype<Character> {
         private int nivelAparicion;
         private int costo;
 
-        protected ArrayList<aWeapon> armas;
+        protected ArrayList<aWeapon> armas = new ArrayList<>();
         private Image imagen;
         private int posX;
         private int posY;
@@ -128,7 +128,9 @@ public class Character implements IPrototype<Character> {
         }
 
         public BuilderCharacter setArmas(ArrayList<aWeapon> arrayArmas){
-            this.armas = arrayArmas;
+            for (aWeapon arma : arrayArmas){
+                addWeapon(arma);
+            }
             return this;
         }
 
