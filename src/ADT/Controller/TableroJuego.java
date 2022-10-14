@@ -7,25 +7,36 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Tablero extends JDialog {
-    private JPanel Panel;
+public class TableroJuego extends JDialog {
+    private JFrame window = new JFrame();
+    private JPanel panelInfo = new JPanel();
+    private JPanel panelTablero = new JPanel();
+    private JTextArea consola;
+    private JLabel vida;
 
     private JButton[][] botonesTablero;
 
-    public Tablero(JFrame parent){
-        super(parent);
-        setTitle("Create Character");
+    public TableroJuego(){
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout( new BorderLayout() );
+        getContentPane().add( topPanel );
 
-        Panel.setLayout(new GridLayout(4, 4));
-        Panel.setPreferredSize(new Dimension(400, 400));
+        panelInfo = new JPanel();
+        panelInfo.setLayout( new BorderLayout() );
+        // Add some buttons
+        consola = new JTextArea( "North" );
+        panelInfo.add( consola);
 
-        setContentPane(Panel);
-        setMinimumSize(new Dimension(480,474));
-        setModal(true);
-        setLocationRelativeTo(parent);
+
+        panelTablero.setBackground(Color.BLUE);
+        panelInfo.setBackground(Color.GREEN);
+        panelTablero.setLayout(new GridLayout(4, 4));
 
         Character[][] tablero = MainController.controlador.getTablero();
         botonesTablero = new JButton[tablero.length][tablero[0].length];
+
+        window.setSize(600,500);
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         for(int r = 0; r < tablero.length; r++)
         {
@@ -42,8 +53,13 @@ public class Tablero extends JDialog {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 System.out.println("Main");
+                                consola.append("\nMain");
+                                MainController.turnoMain = false;
+                                window.invalidate();
+                                window.validate();
+                                window.repaint();
                             }
-                            });
+                        });
                     }
 
                     else if(MainController.controlador.getEnemigos().contains(personaje)){
@@ -51,6 +67,11 @@ public class Tablero extends JDialog {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 System.out.println("Enemy");
+                                consola.append("\nEnemy");
+                                MainController.turnoMain = false;
+                                window.invalidate();
+                                window.validate();
+                                window.repaint();
                             }
                         });                    }
                 }
@@ -58,9 +79,13 @@ public class Tablero extends JDialog {
                     botonesTablero[r][c].setForeground(Color.WHITE);
                 }
                 //botonesTablero[r][c].addActionListener(new TileListener());
-                Panel.add(botonesTablero[r][c]);
+                panelTablero.add(botonesTablero[r][c]);
             }
         }
-        setVisible(true);
+        JSplitPane splitPaneH = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT );
+        splitPaneH.setLeftComponent( panelTablero );
+        splitPaneH.setRightComponent( panelInfo );
+        window.add(splitPaneH);
+        window.setVisible(true);
     }
 }

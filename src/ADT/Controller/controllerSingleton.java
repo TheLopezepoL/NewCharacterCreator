@@ -30,9 +30,11 @@ public class controllerSingleton {
     private WeaponFactory factoryWeapons;
     private TypesFactory factoryTypes;
     private ArrayList <Character> generated_characters;
-
+    private Character mainCharacter;
+    private ArrayList <Character> enemigos;
     private ArrayList <Character> base_characters;
     private ArrayList <aWeapon> base_weapons;
+    private Boolean turno;
 
 
 
@@ -49,6 +51,7 @@ public class controllerSingleton {
     private controllerSingleton (){
         generated_characters = new ArrayList <Character> ();
         base_characters = new ArrayList <Character> ();
+        enemigos = new ArrayList <Character> ();
         base_weapons = new ArrayList <aWeapon> ();
         //FACTORY
         factoryWeapons = new WeaponFactory();
@@ -65,6 +68,20 @@ public class controllerSingleton {
         }
         return myController;
     }
+    public Character getMainCharacter(){return mainCharacter;}
+    public Boolean getTurno(){return turno;}
+    public void setTurno(Boolean act){
+        this.turno = act;
+    }
+    public void setMainCharacter(Character main){this.mainCharacter = main;}
+    public boolean addToTablero (Character pj){
+        this.tablero[pj.getPosX()][pj.getPosY()] = pj;
+        return true;
+    }
+    public void addEnemy(Character pj){
+        this.enemigos.add(pj);
+    }
+    public ArrayList<Character> getEnemigos(){return enemigos;}
 
     //get Weapons Factory
     public  WeaponFactory getFactoryWeapons(){
