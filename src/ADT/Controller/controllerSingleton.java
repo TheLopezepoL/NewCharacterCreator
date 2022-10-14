@@ -87,6 +87,10 @@ public class controllerSingleton {
     public  WeaponFactory getFactoryWeapons(){
         return factoryWeapons;
     }
+    //get Types Factory
+    public  TypesFactory getFactoryTypes(){
+        return factoryTypes;
+    }
     public Character[][] getTablero(){
         return tablero;
     }
@@ -102,6 +106,10 @@ public class controllerSingleton {
         return generated_characters;
     }
 
+    public void refreshMatriz (Character pj, int oldX, int oldY){
+        tablero[oldX][oldY] = null;
+        tablero[pj.getPosX()][pj.getPosY()] = pj;
+    }
     //print Armas
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){

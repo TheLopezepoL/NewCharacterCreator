@@ -2,6 +2,7 @@ package ADT.Controller;
 
 import ADT.Characters.Character;
 import ADT.Characters.InfoCharacter;
+import ADT.Enums.EnumCharacters;
 import ADT.State;
 import ADT.Weapon.WeaponFactory;
 
@@ -30,6 +31,7 @@ public class MainController {
                 .setNivelAparicion(1)
                 .setEstado(State.DEFAULT)
                 .setImagen()
+                .setTipo(EnumCharacters.TERRESTRE)
                 .setPos(2,2)
                 .build();
 
@@ -67,14 +69,12 @@ public class MainController {
         TableroJuego tableroForm = new TableroJuego();
 
         while(jugando){
-            System.out.println("Jugando");
             if (controlador.getTurno()){
                 turnoMain = true;
                 JOptionPane.showMessageDialog(null, "Su turno");
                 while(turnoMain){
 
                 }
-                System.out.println(turnoMain);
                 controlador.setTurno(!controlador.getTurno());
             }
             else{

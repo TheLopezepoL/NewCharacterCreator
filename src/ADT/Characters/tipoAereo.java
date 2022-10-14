@@ -11,7 +11,7 @@ public class tipoAereo extends aTipo{
     }
 
     @Override
-    public  int moverse(Character infoCharacter){
-        return 0;
+    public  Boolean moverse(Character infoCharacter, int x, int y){
+        return true;
     }
 }

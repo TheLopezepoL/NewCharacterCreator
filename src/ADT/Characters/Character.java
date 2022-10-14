@@ -1,6 +1,8 @@
 package ADT.Characters;
 
+import ADT.Controller.MainController;
 import ADT.Controller.controllerSingleton;
+import ADT.Enums.EnumCharacters;
 import ADT.IBuilder;
 import ADT.IPrototype;
 import ADT.State;
@@ -80,6 +82,7 @@ public class Character implements IPrototype<Character> {
     public Image getImagen(){return imagen;}
     public int getPosX(){return posX;}
     public int getPosY(){return posY;}
+    public aTipo getTipo(){return tipo;}
 
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
@@ -141,9 +144,9 @@ public class Character implements IPrototype<Character> {
         }
 
 
-        public BuilderCharacter setTipo (aTipo tipo){
+        public BuilderCharacter setTipo (EnumCharacters type){
             //clone arma
-            this.tipo = tipo;
+            this.tipo = MainController.controlador.getFactoryTypes().createType(type);
             return this;
         }
 
