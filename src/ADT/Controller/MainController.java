@@ -13,6 +13,7 @@ public class MainController {
     public static controllerSingleton controlador;
     public static volatile Boolean turnoMain;
     public static void main(String[] args) {
+        controlador = controllerSingleton.getController();
 
         Boolean jugando = true;
         turnoMain = true;
@@ -85,6 +86,8 @@ public class MainController {
             }
 
         }
+
+
 
         //CREAR ARMA
         //1- FACTORY WEAPONS

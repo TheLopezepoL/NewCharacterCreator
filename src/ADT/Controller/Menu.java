@@ -1,8 +1,10 @@
 package ADT.Controller;
 
+import ADT.Characters.CharacterSelection;
 import ADT.Characters.CloneCharacter;
 import ADT.Weapon.CreateWeapon;
 import ADT.Characters.CreateCharacter;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,6 +59,15 @@ public class Menu extends JDialog{
 
 
         });
+
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { CharacterSelection seleccion = new CharacterSelection(null); }
+        });
+
         setVisible(true);
+
+
+
     }
 }
