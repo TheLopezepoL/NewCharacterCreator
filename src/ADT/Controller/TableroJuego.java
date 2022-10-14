@@ -103,8 +103,10 @@ public class TableroJuego extends JDialog {
                             int oldY = mainPj.getPosY();
                             int newX = (Integer)(((JButton)e.getSource()).getClientProperty( "x" ));
                             int newY = (Integer)(((JButton)e.getSource()).getClientProperty( "y" ));
-                            MainController.controlador.getMainCharacter().getTipo().moverse(mainPj,newX,newY);
-                            MainController.controlador.refreshMatriz(MainController.controlador.getMainCharacter(),oldX,oldY);
+                            if (MainController.controlador.getMainCharacter().getTipo().moverse(mainPj,newX,newY)){
+                                MainController.controlador.refreshMatriz(MainController.controlador.getMainCharacter(),oldX,oldY);
+                            }
+
                             cargarTablero();
                             window.invalidate();
                             window.validate();
