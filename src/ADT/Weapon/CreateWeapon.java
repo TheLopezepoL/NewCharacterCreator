@@ -2,7 +2,6 @@ package ADT.Weapon;
 
 import ADT.Controller.MainController;
 import ADT.Enums.EnumWeapons;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,7 @@ import java.awt.event.ActionListener;
 
 
 public class CreateWeapon extends JDialog{
-    private JTextField txtName;
+    //private JTextField txtName;
     private JSpinner spAlcance;
     private JSpinner spDanho;
     private JSpinner spRadio;
@@ -20,6 +19,7 @@ public class CreateWeapon extends JDialog{
     private JButton cancelButton;
     private JComboBox cbTipo;
     private JPanel createWeaponPanel;
+    private JComboBox nameComboBox;
 
     public CreateWeapon(JFrame parent){
         super(parent);
@@ -30,10 +30,15 @@ public class CreateWeapon extends JDialog{
         setLocationRelativeTo(parent);
 
         cbTipo.setModel(new DefaultComboBoxModel<>(EnumWeapons.values()));
+
+        for (String name : MainController.controlador.armasJSON()){
+            nameComboBox.addItem(name);
+        }
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = txtName.getText();
+                String name = nameComboBox.getSelectedItem().toString();
+                //String name = txtName.getText();
                 int alcance = (Integer) spAlcance.getValue();
                 int danho = (Integer) spDanho.getValue();
                 int velocidad = (Integer) spVelocidad.getValue();

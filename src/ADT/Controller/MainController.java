@@ -18,11 +18,15 @@ public class MainController {
         //CONTROLADOR PRINCIPAL
         controlador = controllerSingleton.getController();
         controlador.setArmaDefault(controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA));
+        /*for(String nombre:controlador.personajesJSON()){
+            System.out.println(nombre);
+        }*/
+        controlador.personajesJSON();
 
         //TURNOS
         turnoMain = true;
         controlador.setTurno(true);
-
+        /*
         //ADD 2 PJ
         Character nuevoCharacter = new Character.BuilderCharacter().setName("caballero")
                 .setVida(100)
@@ -57,13 +61,13 @@ public class MainController {
                 .setPos(1,3)
                 .build();
 
-/*
         controlador.setMainCharacter(nuevoCharacter);
         controlador.addEnemy(enemigoCharacter);
         controlador.addEnemy(enemigoCharacter2);
         controlador.addToTablero(nuevoCharacter);
         controlador.addToTablero(enemigoCharacter);
-        controlador.addToTablero(enemigoCharacter2);*/
+        controlador.addToTablero(enemigoCharacter2);
+        */
 
 
         //ABRO MENU PRINCIPAL

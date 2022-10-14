@@ -4,17 +4,14 @@ import ADT.Controller.MainController;
 import ADT.Enums.EnumCharacters;
 import ADT.State;
 import ADT.Weapon.aWeapon;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CreateCharacter extends JDialog {
-    private JTextField nameField;
+    //private JTextField nameField;
     private JSpinner spinnerVida;
     private JSpinner spinnerNivel;
     private JSpinner spinnerCampos;
@@ -29,6 +26,7 @@ public class CreateCharacter extends JDialog {
 
     protected Character.BuilderCharacter builderCharacter;
     private JPanel createCharacterPanel;
+    private JComboBox namesComboBox;
 
     public CreateCharacter(JFrame parent){
         super(parent);
@@ -42,6 +40,10 @@ public class CreateCharacter extends JDialog {
         builderCharacter = new Character.BuilderCharacter();
 
         comboBoxTipo.setModel(new DefaultComboBoxModel<>(EnumCharacters.values()));
+
+        for (String name : MainController.controlador.personajesJSON()){
+            namesComboBox.addItem(name);
+        }
 
         for (aWeapon item : MainController.controlador.getBaseWeapons()) {
             comboBoxArma.addItem(item.nombre);
@@ -60,8 +62,8 @@ public class CreateCharacter extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
-                String nombrePersonaje = nameField.getText();
+                String nombrePersonaje = namesComboBox.getSelectedItem().toString();
+                //String nombrePersonaje = nameField.getText();
                 int vidaPersonaje = (Integer) spinnerVida.getValue();
                 int nivelPersonaje = (Integer) spinnerNivel.getValue();
                 int valorPersonaje = (Integer) spinnerCosto.getValue();

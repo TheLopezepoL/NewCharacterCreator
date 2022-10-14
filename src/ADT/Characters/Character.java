@@ -84,9 +84,9 @@ public class Character implements IPrototype<Character> {
     public Image getImagen(){return imagen;}
     public int getPosX(){return posX;}
     public int getPosY(){return posY;}
-    public aTipo getTipo(){return tipo;}
+    //public aTipo getTipo(){return tipo;}
     public double getVida(){return vida;}
-    public ArrayList<aWeapon> getArmas(){return armas;}
+    //public ArrayList<aWeapon> getArmas(){return armas;}
 
     public void setPos (int x, int y){
         this.posX = x;
@@ -100,9 +100,7 @@ public class Character implements IPrototype<Character> {
         this.estado = estado;
     }
 
-    public double getVida() {
-        return vida;
-    }
+
 
     public int getNivel() {
         return nivel;

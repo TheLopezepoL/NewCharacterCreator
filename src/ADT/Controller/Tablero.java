@@ -15,7 +15,7 @@ public class Tablero extends JDialog {
 
     public Tablero(){
         //super(parent);
-        setTitle("Create Character");
+        setTitle("Tablero");
 
         Panel.setLayout(new GridLayout(4, 4));
         Panel.setPreferredSize(new Dimension(400, 400));

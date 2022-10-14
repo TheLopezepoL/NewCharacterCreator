@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import ADT.Characters.Character;
 import ADT.Characters.TypesFactory;
@@ -113,6 +114,53 @@ public class controllerSingleton {
         tablero[oldX][oldY] = null;
         tablero[pj.getPosX()][pj.getPosY()] = pj;
     }
+    //Personajes posibles
+    public ArrayList<String> personajesJSON(){
+
+        JSONParser jsonParser = parser;
+        FileReader lector;
+        try {
+            lector = new FileReader(".\\src\\ImagenesPersonaje.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject lista;
+        try {
+
+            lista = (JSONObject) jsonParser.parse(lector);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<String> nombres = new ArrayList<>(lista.keySet());
+        return nombres;
+    }
+    //Armas posibles
+    public ArrayList<String> armasJSON(){
+
+        JSONParser jsonParser = parser;
+        FileReader lector;
+        try {
+            lector = new FileReader(".\\src\\ImagenesArma.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject lista;
+        try {
+
+            lista = (JSONObject) jsonParser.parse(lector);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<String> nombres = new ArrayList<>(lista.keySet());
+        return nombres;
+    }
+
     //print Armas
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){
