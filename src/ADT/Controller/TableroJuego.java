@@ -7,31 +7,46 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Tablero extends JDialog {
-    private JPanel Panel;
+public class TableroJuego extends JDialog {
+
+    private JFrame window = new JFrame();
+    private JPanel panelInfo = new JPanel();
+    private JPanel panelTablero = new JPanel();
+    private JTextArea consola;
+    private JLabel vida;
 
     private JButton[][] botonesTablero;
-    JFrame parent = new JFrame();
 
-    public Tablero(){
-        //super(parent);
-        setTitle("Create Character");
 
-        Panel.setLayout(new GridLayout(4, 4));
-        Panel.setPreferredSize(new Dimension(400, 400));
+    public TableroJuego(){
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout( new BorderLayout() );
+        getContentPane().add( topPanel );
 
-        setContentPane(Panel);
-        setMinimumSize(new Dimension(480,474));
-        setModal(true);
-        setLocationRelativeTo(parent);
+        panelInfo = new JPanel();
+        panelInfo.setLayout( new BorderLayout() );
+        // Add some buttons
+        consola = new JTextArea( "North" );
+        panelInfo.add( consola);
 
-        cargarTablero(parent);
-        setVisible(true);
+        panelTablero.setBackground(Color.BLUE);
+        panelInfo.setBackground(Color.GREEN);
+        panelTablero.setLayout(new GridLayout(4, 4));
 
+        window.setSize(600,500);
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        cargarTablero();
+
+        JSplitPane splitPaneH = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT );
+        splitPaneH.setLeftComponent( panelTablero );
+        splitPaneH.setRightComponent( panelInfo );
+        window.add(splitPaneH);
+        window.setVisible(true);
     }
 
-    public void cargarTablero(JFrame window){
-        Panel.removeAll();
+    public void cargarTablero(){
+        panelTablero.removeAll();
 
         Character[][] tablero = MainController.controlador.getTablero();
         botonesTablero = new JButton[tablero.length][tablero[0].length];
@@ -54,9 +69,8 @@ public class Tablero extends JDialog {
                     botonesTablero[r][c].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            MainController.jugar();
-                            //Jugando jugando = new Jugando();
-                            //jugando.run();
+                            System.out.println("Main");
+                            consola.append("\nMain");
                             MainController.turnoMain = false;
                             window.invalidate();
                             window.validate();
@@ -66,18 +80,23 @@ public class Tablero extends JDialog {
                 }
 
                 else if(MainController.controlador.getEnemigos().contains(personaje)){
-
                     botonesTablero[r][c].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                            MainController.controlador.getMainCharacter().getTipo().atacar(MainController.controlador.getMainCharacter(),personaje);
+                            MainController.controlador.getMainCharacter().getTipo().atacar(MainController.controlador.getMainCharacter(), personaje);
                             MainController.turnoMain = false;
+                            cargarTablero();
                             window.invalidate();
                             window.validate();
                             window.repaint();
                         }
                     });
+
+                    if (personaje.getVida() <= 0){
+                        botonesTablero[r][c].setEnabled(false);
+
+                    }
                 }
                 else{
                     botonesTablero[r][c].putClientProperty( "x", r);
@@ -95,7 +114,7 @@ public class Tablero extends JDialog {
                                 MainController.controlador.refreshMatriz(MainController.controlador.getMainCharacter(),oldX,oldY);
                             }
 
-                            cargarTablero(window);
+                            cargarTablero();
                             window.invalidate();
                             window.validate();
                             window.repaint();
@@ -107,10 +126,11 @@ public class Tablero extends JDialog {
 
 
                 //botonesTablero[r][c].addActionListener(new TileListener());
-                Panel.add(botonesTablero[r][c]);
+                panelTablero.add(botonesTablero[r][c]);
             }
         }
-        Panel.revalidate();
-        Panel.repaint();
+        panelTablero.revalidate();
+        panelTablero.repaint();
+        return;
     }
 }

@@ -30,9 +30,12 @@ public class controllerSingleton {
     private WeaponFactory factoryWeapons;
     private TypesFactory factoryTypes;
     private ArrayList <Character> generated_characters;
-
+    private Character mainCharacter;
+    private ArrayList <Character> enemigos;
     private ArrayList <Character> base_characters;
     private ArrayList <aWeapon> base_weapons;
+    private aWeapon armaDefault;
+    private Boolean turno;
 
 
 
@@ -49,6 +52,7 @@ public class controllerSingleton {
     private controllerSingleton (){
         generated_characters = new ArrayList <Character> ();
         base_characters = new ArrayList <Character> ();
+        enemigos = new ArrayList <Character> ();
         base_weapons = new ArrayList <aWeapon> ();
         //FACTORY
         factoryWeapons = new WeaponFactory();
@@ -65,10 +69,30 @@ public class controllerSingleton {
         }
         return myController;
     }
+    public Character getMainCharacter(){return mainCharacter;}
+    public Boolean getTurno(){return turno;}
+    public void setTurno(Boolean act){
+        this.turno = act;
+    }
+    public void setMainCharacter(Character main){this.mainCharacter = main;}
+    public boolean addToTablero (Character pj){
+        this.tablero[pj.getPosX()][pj.getPosY()] = pj;
+        return true;
+    }
+    public aWeapon getArmaDefault (){return armaDefault;}
+    public void setArmaDefault (aWeapon arma){ armaDefault=arma;}
+    public void addEnemy(Character pj){
+        this.enemigos.add(pj);
+    }
+    public ArrayList<Character> getEnemigos(){return enemigos;}
 
     //get Weapons Factory
     public  WeaponFactory getFactoryWeapons(){
         return factoryWeapons;
+    }
+    //get Types Factory
+    public  TypesFactory getFactoryTypes(){
+        return factoryTypes;
     }
     public Character[][] getTablero(){
         return tablero;
@@ -85,6 +109,10 @@ public class controllerSingleton {
         return generated_characters;
     }
 
+    public void refreshMatriz (Character pj, int oldX, int oldY){
+        tablero[oldX][oldY] = null;
+        tablero[pj.getPosX()][pj.getPosY()] = pj;
+    }
     //print Armas
     public void printArmas(){
         for (int i=0;i<base_weapons.size();i++){

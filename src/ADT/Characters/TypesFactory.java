@@ -4,10 +4,12 @@ import ADT.Enums.EnumCharacters;
 
 public class TypesFactory {
     //FACTORY METHOD
-    public aTipo createCharacter (EnumCharacters tipo, String nombre, double vida, int nivel, int campos, int nivelAparicion, int costo){
+    public aTipo createType (EnumCharacters tipo){
         switch (tipo){
             case TERRESTRE:
                return new tipoTerrestre();
+            case AEREO:
+                return new tipoAereo();
             default:
                 throw new IllegalArgumentException("Tipo de personaje no existe");
         }

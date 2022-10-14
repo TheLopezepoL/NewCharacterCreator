@@ -1,6 +1,8 @@
 package ADT.Characters;
 
+import ADT.Controller.MainController;
 import ADT.Controller.controllerSingleton;
+import ADT.Enums.EnumCharacters;
 import ADT.IBuilder;
 import ADT.IPrototype;
 import ADT.State;
@@ -32,7 +34,8 @@ public class Character implements IPrototype<Character> {
 
     }
     public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion,
-                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado,Image imagen)  {
+                      int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado,Image imagen,
+                      int posX, int posY)  {
         this.nombre = nombre;
         this.vida = vida;
         this.nivel = nivel;
@@ -40,9 +43,9 @@ public class Character implements IPrototype<Character> {
         this.nivelAparicion = nivelAparicion;
         this.costo = costo;
         this.armas = weapons;
-        this.posX = 0;
-        this.posY = 0;
         this.tipo = tipo;
+        this.posX = posX;
+        this.posY = posY;
         this.estado = estado;
         this.imagen = imagen;
     }
@@ -60,23 +63,42 @@ public class Character implements IPrototype<Character> {
     @Override
     public Character clone() {
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
-                this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado,this.imagen);
+                this.nivelAparicion,this.costo,this.armas,this.tipo,this.estado,this.imagen,this.posX, this.posX);
     }
 
     @Override
     public Character deepClone(){
+
         ArrayList<aWeapon> armasClone = new ArrayList<aWeapon>();
         for (int i=0; i<this.armas.size(); i++){
             armasClone.add(this.armas.get(i).clone());
         }
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
-                this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado,this.imagen);
+                this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado,this.imagen,this.posX, this.posX);
+
     }
 
     public String getNombre(){
         return nombre;
     }
     public Image getImagen(){return imagen;}
+    public int getPosX(){return posX;}
+    public int getPosY(){return posY;}
+    public aTipo getTipo(){return tipo;}
+    public double getVida(){return vida;}
+    public ArrayList<aWeapon> getArmas(){return armas;}
+
+    public void setPos (int x, int y){
+        this.posX = x;
+        this.posY = y;
+    }
+    public void setVida (int puntos){
+        this.vida = this.vida - puntos;
+    }
+
+    public void setEstado (State estado){
+        this.estado = estado;
+    }
 
     public double getVida() {
         return vida;
@@ -132,6 +154,11 @@ public class Character implements IPrototype<Character> {
 
         public BuilderCharacter (){}
 
+        public BuilderCharacter setPos (int x, int y){
+            this.posX = x;
+            this.posY = y;
+            return this;
+        }
         public BuilderCharacter setName(String name){
             this.nombre = name;
             return this;
@@ -169,9 +196,9 @@ public class Character implements IPrototype<Character> {
         }
 
 
-        public BuilderCharacter setTipo (aTipo tipo){
+        public BuilderCharacter setTipo (EnumCharacters type){
             //clone arma
-            this.tipo = tipo;
+            this.tipo = MainController.controlador.getFactoryTypes().createType(type);
             return this;
         }
 
@@ -191,7 +218,7 @@ public class Character implements IPrototype<Character> {
 
         @Override
         public Character build(){
-            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado,imagen);
+            return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado,imagen, posX,posY);
         }
 
 

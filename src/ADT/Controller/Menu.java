@@ -1,8 +1,10 @@
 package ADT.Controller;
 
+import ADT.Characters.CharacterSelection;
 import ADT.Characters.CloneCharacter;
 import ADT.Weapon.CreateWeapon;
 import ADT.Characters.CreateCharacter;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +26,7 @@ public class Menu extends JDialog{
         setMinimumSize(new Dimension(480,474));
         setModal(true);
         setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
 
@@ -66,6 +68,19 @@ public class Menu extends JDialog{
             }
         });
 
+
+        playButton.addActionListener(new ActionListener() {
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                CharacterSelection seleccion = new CharacterSelection(null);
+                }
+        });
+
         setVisible(true);
+
+
+
     }
 }
