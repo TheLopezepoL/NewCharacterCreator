@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 
 public class TableroJuego extends JDialog {
 
-    private JFrame window = new JFrame();
-    private JPanel panelInfo = new JPanel();
-    private JPanel panelTablero = new JPanel();
-    private JTextArea consola;
-    private JLabel vida;
+    public static JFrame window = new JFrame();
+    public static JPanel panelInfo = new JPanel();
+    public static JPanel panelTablero = new JPanel();
+    public static JTextArea consola;
+    public static JLabel vida;
 
-    private JButton[][] botonesTablero;
+    public static JButton[][] botonesTablero;
 
 
     public TableroJuego(){
@@ -45,7 +45,7 @@ public class TableroJuego extends JDialog {
         window.setVisible(true);
     }
 
-    public void cargarTablero(){
+    public static void cargarTablero(){
         panelTablero.removeAll();
 
         Character[][] tablero = MainController.controlador.getTablero();
@@ -115,9 +115,7 @@ public class TableroJuego extends JDialog {
                             }
 
                             cargarTablero();
-                            window.invalidate();
-                            window.validate();
-                            window.repaint();
+
                             MainController.turnoMain = false;
 
                         }
@@ -131,6 +129,9 @@ public class TableroJuego extends JDialog {
         }
         panelTablero.revalidate();
         panelTablero.repaint();
+        window.invalidate();
+        window.validate();
+        window.repaint();
         return;
     }
 }
