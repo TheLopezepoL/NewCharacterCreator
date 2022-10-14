@@ -5,7 +5,7 @@ import ADT.Characters.Character;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Jugando implements Runnable{
+public class Jugando extends Thread {
     public Jugando(){
 
     }

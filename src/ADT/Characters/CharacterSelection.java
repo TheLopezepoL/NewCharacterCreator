@@ -1,7 +1,9 @@
 package ADT.Characters;
 
+import ADT.Controller.Jugando;
 import ADT.Controller.MainController;
 import ADT.Controller.Tablero;
+import ADT.Controller.TableroJuego;
 import com.sun.tools.javac.Main;
 
 import javax.swing.*;
@@ -76,7 +78,9 @@ public class CharacterSelection extends JDialog{
 
                 dispose();
                 // llamar a crear el form de tablero
-                Tablero tableroForm = new Tablero();
+                TableroJuego tableroForm = new TableroJuego();
+                Jugando jugar = new Jugando();
+                jugar.start();
             }
         });
 

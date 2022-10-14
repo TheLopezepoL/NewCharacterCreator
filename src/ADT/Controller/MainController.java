@@ -67,8 +67,9 @@ public class MainController {
         //ABRO MENU PRINCIPAL
         Menu menu = new Menu(null);
         System.out.println("PASE");
-        //TableroJuego tableroForm = new TableroJuego();
-       //jugar();
+    /*
+        TableroJuego tableroForm = new TableroJuego();
+        jugar();*/
         //CREAR ARMA
         //1- FACTORY WEAPONS
 
@@ -82,6 +83,7 @@ public class MainController {
         ArrayList<Character> enemigos = controlador.getEnemigos();
         while(jugando){
             System.out.println("Jugando");
+
             if (controlador.getTurno()){
                 turnoMain = true;
                 JOptionPane.showMessageDialog(null, "Su turno");

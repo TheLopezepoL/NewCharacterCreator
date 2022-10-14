@@ -64,7 +64,9 @@ public class Menu extends JDialog{
             @Override
 
             public void actionPerformed(ActionEvent e) {
-                CharacterSelection seleccion = new CharacterSelection(null); }
+                dispose();
+                CharacterSelection seleccion = new CharacterSelection(null);
+                }
         });
 
         setVisible(true);
