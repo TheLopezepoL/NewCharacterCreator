@@ -185,4 +185,10 @@ public class controllerSingleton {
         }
         return imagen;
     }
+
+    public Character getGeneratedCharacterByIndex(int index){
+        if (getGeneratedCharacters().size() > index)
+            return getGeneratedCharacters().get(index);
+        return null;
+    }
 }

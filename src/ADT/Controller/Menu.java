@@ -15,6 +15,7 @@ public class Menu extends JDialog{
     private JButton playButton;
     private JPanel menuPanel;
     private JButton cloneCharacterButton;
+    private JButton visualizerButton;
 
     public Menu(JFrame parent){
         super(parent);
@@ -57,6 +58,14 @@ public class Menu extends JDialog{
 
 
         });
+
+        visualizerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                CharacterVisualizer characterVisualizer = new CharacterVisualizer(null);
+            }
+        });
+
         setVisible(true);
     }
 }

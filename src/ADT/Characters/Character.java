@@ -78,6 +78,42 @@ public class Character implements IPrototype<Character> {
     }
     public Image getImagen(){return imagen;}
 
+    public double getVida() {
+        return vida;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getCampos() {
+        return campos;
+    }
+
+    public int getNivelAparicion() {
+        return nivelAparicion;
+    }
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public ArrayList<aWeapon> getArmas() {
+        return armas;
+    }
+
+    public aTipo getTipo() {
+        return tipo;
+    }
+
+    public State getEstado() {
+        return estado;
+    }
+
+    public aWeapon getWeaponIndex(int index) {
+        return this.getArmas().get(index);
+    }
+
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
         private double vida;
