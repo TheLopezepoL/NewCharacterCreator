@@ -267,4 +267,10 @@ public class controllerSingleton {
             return getGeneratedCharacters().get(index);
         return null;
     }
+
+    public Character getBaseCharacterByIndex(int index){
+        if (getBaseCharacters().size() > index)
+            return getBaseCharacters().get(index);
+        return null;
+    }
 }

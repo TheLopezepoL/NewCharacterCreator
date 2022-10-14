@@ -6,6 +6,7 @@ import ADT.Enums.EnumCharacters;
 import ADT.Enums.EnumWeapons;
 import ADT.State;
 import ADT.Weapon.WeaponFactory;
+import ADT.Weapon.aWeapon;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -26,10 +27,11 @@ public class MainController {
         //TURNOS
         turnoMain = true;
         controlador.setTurno(true);
-        /*
+        aWeapon arma = controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA);
         //ADD 2 PJ
-        Character nuevoCharacter = new Character.BuilderCharacter().setName("caballero")
-                .setVida(100)
+        /*
+        Character nuevoCharacter = new Character.BuilderCharacter().setName("Witch")
+                .setVida(10)
                 .setNivel(1)
                 .setCosto(1)
                 .setCampos(1)
@@ -37,7 +39,8 @@ public class MainController {
                 .setEstado(State.DEFAULT)
                 .setImagen()
                 .setTipo(EnumCharacters.TERRESTRE)
-                .setPos(2,2)
+                .setPos(0,0)
+                .addWeapon(arma)
                 .build();
 
         Character enemigoCharacter = new Character.BuilderCharacter().setName("ghost")
@@ -69,7 +72,7 @@ public class MainController {
         controlador.addToTablero(enemigoCharacter2);
         */
 
-
+        //controlador.getBaseCharacters().add(nuevoCharacter);
         //ABRO MENU PRINCIPAL
         Menu menu = new Menu(null);
     /*

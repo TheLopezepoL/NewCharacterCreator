@@ -39,10 +39,11 @@ public class CharacterVisualizer extends JDialog{
         super(parent);
         setTitle("Character Visualizer");
         setContentPane(basePanel);
+        setMinimumSize(new Dimension(600,600));
         setModal(true);
         setLocationRelativeTo(parent);
 
-        for (Character character : MainController.controlador.getGeneratedCharacters()) {
+        for (Character character : MainController.controlador.getBaseCharacters()) {
             comboBoxCharacters.addItem(character.getNombre());
         }
 
@@ -59,7 +60,7 @@ public class CharacterVisualizer extends JDialog{
                 // Get Personaje
                 int index = comboBoxCharacters.getSelectedIndex();
                 if (index != -1) {
-                    actualCharacter = MainController.controlador.getGeneratedCharacterByIndex(index);
+                    actualCharacter = MainController.controlador.getBaseCharacterByIndex(index);
 
                     // Cargar Informacion
                     charNombreLabel.setText(actualCharacter.getNombre());
@@ -90,11 +91,14 @@ public class CharacterVisualizer extends JDialog{
                 State state = State.valueOf(comboBoxStates.getSelectedItem().toString());
 
                 // Get URL
-                String url = controllerSingleton.getController().datos(actualCharacter.getNombre(), actualCharacter.getNivel(), actualCharacter.getEstado());
-                Image image = controllerSingleton.getController().getImage(url);
+
+                String url = controllerSingleton.getController().datos(actualCharacter.getNombre(), actualCharacter.getNivel(),state);
+                Image image = controllerSingleton.getController().getImage(url).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 
                 // Set Image
-                characterImage.setIcon((Icon) image);
+                //Image image = actualCharacter.getImagen().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+                characterImage.setIcon(new ImageIcon(image));
+                //characterImage.setIcon((Icon) image);
             }
         });
 
@@ -117,9 +121,9 @@ public class CharacterVisualizer extends JDialog{
 
                     // Cargar Imagen
                     String url = controllerSingleton.getController().datosArma(weapon.nombre, weapon.nivel);
-                    Image image = controllerSingleton.getController().getImage(url);
+                    Image image = controllerSingleton.getController().getImage(url).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 
-                    weaponImage.setIcon((Icon) image);
+                    weaponImage.setIcon(new ImageIcon(image));
                 }
             }
         });

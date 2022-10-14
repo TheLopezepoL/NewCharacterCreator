@@ -22,6 +22,12 @@ public class Jugando extends Thread {
                 while(MainController.turnoMain){
                     //ESPERA A ATACAR O MOVERSE
                 }
+                if (gane()){
+                    JOptionPane.showMessageDialog(null, "GANAAA :)");
+                    TableroJuego.window.dispose();
+                    return;
+                }
+
                 MainController.controlador.setTurno(!MainController.controlador.getTurno());
             }
             else{
@@ -30,15 +36,26 @@ public class Jugando extends Thread {
                     System.out.println("--------------------------------------------------------");
                     System.out.println("Turno Enemigo "+i);
                     Character enemigo = enemigos.get(i);
-                    //ATACA O SE MUEVE
-                    int movimiento = (int)(Math.random()*10+1);
-                    if (movimiento <= 5 && moverseAux(enemigo)){
-                        System.out.println("MOVERSE");
+                    if (enemigo.getVida() <= 0){
+                        System.out.println("**ENEMIGO ESTA MUERTO**");
                     }
                     else{
+                        //ATACA O SE MUEVE
+                        int movimiento = (int)(Math.random()*10+1);
+                        if (movimiento <= 5 && moverseAux(enemigo)){
+                            System.out.println("MOVERSE");
+                        }
+                        else{
                             enemigo.getTipo().atacar(enemigo,MainController.controlador.getMainCharacter());
+                        }
+                        TableroJuego.cargarTablero();
+                        if (pierde()){
+                            JOptionPane.showMessageDialog(null, "PERDIÓ :(");
+                            TableroJuego.window.dispose();
+                            return;
+                        }
                     }
-                    TableroJuego.cargarTablero();
+
                 }
                 MainController.controlador.setTurno(!MainController.controlador.getTurno());
             }
@@ -89,6 +106,22 @@ public class Jugando extends Thread {
             return true;
         }
 
+        return false;
+    }
+
+    public Boolean gane(){
+        for (Character enemigo : MainController.controlador.getEnemigos()){
+            if (enemigo.getVida() > 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Boolean pierde(){
+        if (MainController.controlador.getMainCharacter().getVida() <= 0){
+            return true;
+        }
         return false;
     }
 }

@@ -69,6 +69,7 @@ public class CreateCharacter extends JDialog {
                 int valorPersonaje = (Integer) spinnerCosto.getValue();
                 int camposPersonaje = (Integer) spinnerCampos.getValue();
                 int nivelAparicionPersonaje = (Integer) spinnerAparicion.getValue();
+                EnumCharacters tipoPj = (EnumCharacters) comboBoxTipo.getSelectedItem();
 
                 Character nuevoCharacter = builderCharacter.setName(nombrePersonaje)
                         .setVida(vidaPersonaje)
@@ -77,7 +78,7 @@ public class CreateCharacter extends JDialog {
                         .setCampos(camposPersonaje)
                         .setNivelAparicion(nivelAparicionPersonaje)
                         .setEstado(State.DEFAULT)
-                        .setTipo(EnumCharacters.TERRESTRE)
+                        .setTipo(tipoPj)
                         .setImagen()
                         .addWeapon(MainController.controlador.getArmaDefault())
                         .build();
