@@ -25,7 +25,7 @@ public class Menu extends JDialog{
         setMinimumSize(new Dimension(480,474));
         setModal(true);
         setLocationRelativeTo(parent);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
 
@@ -62,7 +62,9 @@ public class Menu extends JDialog{
 
         playButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { CharacterSelection seleccion = new CharacterSelection(null); }
+
+            public void actionPerformed(ActionEvent e) {
+                CharacterSelection seleccion = new CharacterSelection(null); }
         });
 
         setVisible(true);

@@ -124,5 +124,6 @@ public class TableroJuego extends JDialog {
         }
         panelTablero.revalidate();
         panelTablero.repaint();
+        return;
     }
 }

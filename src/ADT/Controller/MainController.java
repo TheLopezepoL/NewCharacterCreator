@@ -12,15 +12,13 @@ import java.util.ArrayList;
 public class MainController {
     public static controllerSingleton controlador;
     public static volatile Boolean turnoMain;
+    public static volatile Boolean jugando;
     public static void main(String[] args) {
-        controlador = controllerSingleton.getController();
-
-        Boolean jugando = true;
-        turnoMain = true;
         //CONTROLADOR PRINCIPAL
         controlador = controllerSingleton.getController();
 
         //TURNOS
+        turnoMain = true;
         controlador.setTurno(true);
 
         //ADD 2 PJ
@@ -57,19 +55,33 @@ public class MainController {
                 .setPos(1,3)
                 .build();
 
+/*
         controlador.setMainCharacter(nuevoCharacter);
         controlador.addEnemy(enemigoCharacter);
         controlador.addEnemy(enemigoCharacter2);
         controlador.addToTablero(nuevoCharacter);
         controlador.addToTablero(enemigoCharacter);
-        controlador.addToTablero(enemigoCharacter2);
+        controlador.addToTablero(enemigoCharacter2);*/
 
-        ArrayList<Character> enemigos = controlador.getEnemigos();
+
         //ABRO MENU PRINCIPAL
-        //Menu menu = new Menu(null);
-        TableroJuego tableroForm = new TableroJuego();
+        Menu menu = new Menu(null);
+        System.out.println("PASE");
+        //TableroJuego tableroForm = new TableroJuego();
+       //jugar();
+        //CREAR ARMA
+        //1- FACTORY WEAPONS
 
+    }
+
+    public static void jugar(){
+        System.out.println("Jugando");
+        //Tablero tableroForm = new Tablero();
+
+        jugando = true;
+        ArrayList<Character> enemigos = controlador.getEnemigos();
         while(jugando){
+            System.out.println("Jugando");
             if (controlador.getTurno()){
                 turnoMain = true;
                 JOptionPane.showMessageDialog(null, "Su turno");
@@ -86,11 +98,5 @@ public class MainController {
             }
 
         }
-
-
-
-        //CREAR ARMA
-        //1- FACTORY WEAPONS
-        WeaponFactory factoryWeapons = new WeaponFactory();
     }
 }

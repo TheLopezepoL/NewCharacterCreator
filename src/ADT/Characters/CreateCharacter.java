@@ -75,6 +75,7 @@ public class CreateCharacter extends JDialog {
                         .setCampos(camposPersonaje)
                         .setNivelAparicion(nivelAparicionPersonaje)
                         .setEstado(State.DEFAULT)
+                        .setTipo(EnumCharacters.TERRESTRE)
                         .setImagen()
                         .build();
 

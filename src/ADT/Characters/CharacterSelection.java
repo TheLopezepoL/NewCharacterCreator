@@ -1,6 +1,8 @@
 package ADT.Characters;
 
 import ADT.Controller.MainController;
+import ADT.Controller.Tablero;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,16 +55,28 @@ public class CharacterSelection extends JDialog{
                 Character protagonista = MainController.controlador.getCharacterByNombre(nombreProtagonista);
                 Character enemigo = MainController.controlador.getCharacterByNombre(nombreEnemigos);
 
+                //MAIN CARACTER
                 MainController.controlador.setMainCharacter(protagonista);
-
+                MainController.controlador.addToTablero(protagonista);
+                //ENEMIGOS
+                int x = 3;
+                int y = 3;
                 for(int i = 1; i <= cantidadEnemigos; i++){
                     Character clonPersonaje = enemigo.deepClone();
                     MainController.controlador.getEnemigos().add(clonPersonaje);
+                    clonPersonaje.setPos(x,y);
+                    MainController.controlador.addToTablero(clonPersonaje);
+                    x--;
+
                 }
-                // llamar a crear el form de tablero
+
 
                 JOptionPane.showMessageDialog(null, "Success");
+
+
                 dispose();
+                // llamar a crear el form de tablero
+                Tablero tableroForm = new Tablero();
             }
         });
 

@@ -68,12 +68,14 @@ public class Character implements IPrototype<Character> {
 
     @Override
     public Character deepClone(){
+
         ArrayList<aWeapon> armasClone = new ArrayList<aWeapon>();
         for (int i=0; i<this.armas.size(); i++){
             armasClone.add(this.armas.get(i).clone());
         }
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
                 this.nivelAparicion,this.costo,armasClone,this.tipo,this.estado,this.imagen,this.posX, this.posX);
+
     }
 
     public String getNombre(){
@@ -83,6 +85,11 @@ public class Character implements IPrototype<Character> {
     public int getPosX(){return posX;}
     public int getPosY(){return posY;}
     public aTipo getTipo(){return tipo;}
+
+    public void setPos (int x, int y){
+        this.posX = x;
+        this.posY = y;
+    }
 
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
