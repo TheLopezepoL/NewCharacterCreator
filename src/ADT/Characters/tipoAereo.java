@@ -6,7 +6,7 @@ public class tipoAereo extends aTipo{
 
     }
     @Override
-    public  int atacar(Character infoCharacter){
+    public  int atacar(Character infoCharacter, Character enemigo){
         return 0;
     }
 

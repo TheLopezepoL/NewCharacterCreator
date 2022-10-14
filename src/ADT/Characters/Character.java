@@ -85,10 +85,19 @@ public class Character implements IPrototype<Character> {
     public int getPosX(){return posX;}
     public int getPosY(){return posY;}
     public aTipo getTipo(){return tipo;}
+    public double getVida(){return vida;}
+    public ArrayList<aWeapon> getArmas(){return armas;}
 
     public void setPos (int x, int y){
         this.posX = x;
         this.posY = y;
+    }
+    public void setVida (int puntos){
+        this.vida = this.vida - puntos;
+    }
+
+    public void setEstado (State estado){
+        this.estado = estado;
     }
 
     public static class BuilderCharacter implements IBuilder<Character> {

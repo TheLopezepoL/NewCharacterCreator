@@ -77,6 +77,7 @@ public class CreateCharacter extends JDialog {
                         .setEstado(State.DEFAULT)
                         .setTipo(EnumCharacters.TERRESTRE)
                         .setImagen()
+                        .addWeapon(MainController.controlador.getArmaDefault())
                         .build();
 
                 if (nuevoCharacter != null){

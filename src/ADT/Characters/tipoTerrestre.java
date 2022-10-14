@@ -1,13 +1,42 @@
 package ADT.Characters;
 
+import ADT.State;
+import ADT.Weapon.aWeapon;
+
 public class tipoTerrestre extends aTipo{
 
     public tipoTerrestre (){
 
     }
     @Override
-    public  int atacar(Character infoCharacter){
-        System.out.println("Ataca a "+infoCharacter.nombre);
+    public  int atacar(Character infoCharacter, Character enemigo){
+        double vidaAnterior = enemigo.vida;
+        System.out.println("Ataca a "+enemigo.nombre +" Vida Anterior: " +vidaAnterior);
+
+        int danho = 0;
+        double distancia =  Math.sqrt((infoCharacter.posY - enemigo.posY) * (infoCharacter.posY - enemigo.posY) + (enemigo.posX - infoCharacter.posX) * (enemigo.posX - infoCharacter.posX));
+        int aux = (int)distancia;
+        System.out.println(aux);
+
+        for (aWeapon arma : infoCharacter.getArmas()){
+            if (arma.activo){
+                if (arma.alcance >= aux){
+                    danho+=arma.danho;
+                    System.out.println("\tArma: "+arma.nombre +"\tDaño causado: "+ arma.danho);
+                }
+                else{
+                    System.out.println("\tArma: "+arma.nombre +"\tFuera de Alcance");
+                }
+
+            }
+
+        }
+        enemigo.setVida(danho);
+        if (enemigo.vida <= 0){
+            enemigo.setEstado(State.DEAD);
+            enemigo.updateImagen();
+        }
+        System.out.println("Daño total: "+danho+" Nueva vida: "+enemigo.vida);
         return 0;
     }
 

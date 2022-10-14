@@ -34,6 +34,7 @@ public class controllerSingleton {
     private ArrayList <Character> enemigos;
     private ArrayList <Character> base_characters;
     private ArrayList <aWeapon> base_weapons;
+    private aWeapon armaDefault;
     private Boolean turno;
 
 
@@ -78,6 +79,8 @@ public class controllerSingleton {
         this.tablero[pj.getPosX()][pj.getPosY()] = pj;
         return true;
     }
+    public aWeapon getArmaDefault (){return armaDefault;}
+    public void setArmaDefault (aWeapon arma){ armaDefault=arma;}
     public void addEnemy(Character pj){
         this.enemigos.add(pj);
     }

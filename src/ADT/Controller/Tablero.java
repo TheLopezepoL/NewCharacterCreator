@@ -66,11 +66,12 @@ public class Tablero extends JDialog {
                 }
 
                 else if(MainController.controlador.getEnemigos().contains(personaje)){
+
                     botonesTablero[r][c].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                            MainController.controlador.getMainCharacter().getTipo().atacar(personaje);
+                            MainController.controlador.getMainCharacter().getTipo().atacar(MainController.controlador.getMainCharacter(),personaje);
                             MainController.turnoMain = false;
                             window.invalidate();
                             window.validate();

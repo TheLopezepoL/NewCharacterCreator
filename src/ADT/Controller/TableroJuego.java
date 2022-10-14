@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TableroJuego extends JDialog {
+
     private JFrame window = new JFrame();
     private JPanel panelInfo = new JPanel();
     private JPanel panelTablero = new JPanel();
@@ -83,13 +84,19 @@ public class TableroJuego extends JDialog {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                            MainController.controlador.getMainCharacter().getTipo().atacar(personaje);
+                            MainController.controlador.getMainCharacter().getTipo().atacar(MainController.controlador.getMainCharacter(), personaje);
                             MainController.turnoMain = false;
+                            cargarTablero();
                             window.invalidate();
                             window.validate();
                             window.repaint();
                         }
                     });
+
+                    if (personaje.getVida() <= 0){
+                        botonesTablero[r][c].setEnabled(false);
+
+                    }
                 }
                 else{
                     botonesTablero[r][c].putClientProperty( "x", r);

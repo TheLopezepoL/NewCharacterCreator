@@ -3,6 +3,7 @@ package ADT.Controller;
 import ADT.Characters.Character;
 import ADT.Characters.InfoCharacter;
 import ADT.Enums.EnumCharacters;
+import ADT.Enums.EnumWeapons;
 import ADT.State;
 import ADT.Weapon.WeaponFactory;
 
@@ -16,6 +17,7 @@ public class MainController {
     public static void main(String[] args) {
         //CONTROLADOR PRINCIPAL
         controlador = controllerSingleton.getController();
+        controlador.setArmaDefault(controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA));
 
         //TURNOS
         turnoMain = true;
@@ -66,7 +68,6 @@ public class MainController {
 
         //ABRO MENU PRINCIPAL
         Menu menu = new Menu(null);
-        System.out.println("PASE");
     /*
         TableroJuego tableroForm = new TableroJuego();
         jugar();*/
@@ -82,7 +83,6 @@ public class MainController {
         jugando = true;
         ArrayList<Character> enemigos = controlador.getEnemigos();
         while(jugando){
-            System.out.println("Jugando");
 
             if (controlador.getTurno()){
                 turnoMain = true;
