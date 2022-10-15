@@ -55,6 +55,7 @@ public class CreateCharacter extends JDialog {
                 String nombreArmaAdd = comboBoxArma.getSelectedItem().toString();
                 aWeapon armaAdd = MainController.controlador.getArmaByNombre(nombreArmaAdd);
                 builderCharacter.addWeapon(armaAdd);
+                JOptionPane.showMessageDialog(null, nombreArmaAdd+" agregada!");
             }
         });
 
@@ -78,6 +79,10 @@ public class CreateCharacter extends JDialog {
                     return;
                 }
 
+                if(nivelPersonaje <= 0) {
+                    JOptionPane.showMessageDialog(null, "ERROR! El nivel del personaje tiene que ser mayor a 0");
+                    return;
+                }
 
 
                 Character nuevoCharacter = builderCharacter.setName(nombrePersonaje)
