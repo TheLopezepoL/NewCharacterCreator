@@ -45,6 +45,11 @@ public class CreateWeapon extends JDialog{
                 int radio = (Integer) spRadio.getValue();
                 EnumWeapons tipo = (EnumWeapons) cbTipo.getSelectedItem();
 
+                if (MainController.controlador.getArmaByNombre(name) != null){
+                    JOptionPane.showMessageDialog(null, "ERROR! Ya hay un arma generada con este nombre");
+                    return;
+                }
+
                 aWeapon arma = MainController.controlador.createBaseWeapon(name,alcance,danho,radio,velocidad,1,tipo);
                 if (arma != null){
                     MainController.controlador.getBaseWeapons().add(arma);

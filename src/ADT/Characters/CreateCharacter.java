@@ -62,6 +62,8 @@ public class CreateCharacter extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+
                 String nombrePersonaje = namesComboBox.getSelectedItem().toString();
                 //String nombrePersonaje = nameField.getText();
                 int vidaPersonaje = (Integer) spinnerVida.getValue();
@@ -70,6 +72,13 @@ public class CreateCharacter extends JDialog {
                 int camposPersonaje = (Integer) spinnerCampos.getValue();
                 int nivelAparicionPersonaje = (Integer) spinnerAparicion.getValue();
                 EnumCharacters tipoPj = (EnumCharacters) comboBoxTipo.getSelectedItem();
+
+                if (MainController.controlador.getCharacterByNombre(nombrePersonaje) != null){
+                    JOptionPane.showMessageDialog(null, "ERROR! Ya hay un personaje generado con este nombre");
+                    return;
+                }
+
+
 
                 Character nuevoCharacter = builderCharacter.setName(nombrePersonaje)
                         .setVida(vidaPersonaje)
