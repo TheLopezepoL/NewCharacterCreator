@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class CreateCharacter extends JDialog {
     //private JTextField nameField;
     private JSpinner spinnerVida;
-    private JSpinner spinnerNivel;
+    //private JSpinner spinnerNivel;
     private JSpinner spinnerCampos;
     private JSpinner spinnerAparicion;
     private JSpinner spinnerCosto;
@@ -27,6 +27,8 @@ public class CreateCharacter extends JDialog {
     protected Character.BuilderCharacter builderCharacter;
     private JPanel createCharacterPanel;
     private JComboBox namesComboBox;
+    private JComboBox comboBoxNivel;
+    private JButton selectButton;
 
     public CreateCharacter(JFrame parent){
         super(parent);
@@ -38,6 +40,8 @@ public class CreateCharacter extends JDialog {
 
         //armasPersonaje = new ArrayList<aWeapon>();
         builderCharacter = new Character.BuilderCharacter();
+        comboBoxNivel.setEnabled(false);
+
 
         comboBoxTipo.setModel(new DefaultComboBoxModel<>(EnumCharacters.values()));
 
@@ -46,7 +50,11 @@ public class CreateCharacter extends JDialog {
         }
 
         for (aWeapon item : MainController.controlador.getBaseWeapons()) {
-            comboBoxArma.addItem(item.nombre);
+            if(item.nombre!="Default"){
+                comboBoxArma.addItem(item.nombre);
+            }
+
+
         }
 
         addButton.addActionListener(new ActionListener() {
@@ -68,7 +76,8 @@ public class CreateCharacter extends JDialog {
                 String nombrePersonaje = namesComboBox.getSelectedItem().toString();
                 //String nombrePersonaje = nameField.getText();
                 int vidaPersonaje = (Integer) spinnerVida.getValue();
-                int nivelPersonaje = (Integer) spinnerNivel.getValue();
+                int nivelPersonaje = Integer.valueOf((String) comboBoxNivel.getSelectedItem());
+                //int nivelPersonaje = (Integer) spinnerNivel.getValue();
                 int valorPersonaje = (Integer) spinnerCosto.getValue();
                 int camposPersonaje = (Integer) spinnerCampos.getValue();
                 int nivelAparicionPersonaje = (Integer) spinnerAparicion.getValue();
@@ -116,7 +125,22 @@ public class CreateCharacter extends JDialog {
                 dispose();
             }
         });
+
+        selectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = namesComboBox.getSelectedItem().toString();
+                comboBoxNivel.removeAllItems();
+                for (String nivel : MainController.controlador.nivelesJSON(nombre)){
+                    comboBoxNivel.addItem(nivel);
+                }
+                //getNiveles desde json y singletonController
+                comboBoxNivel.setEnabled(true);
+            }
+        });
+
         setVisible(true);
+
     }
 }
 

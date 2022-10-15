@@ -18,7 +18,7 @@ public class MainController {
     public static void main(String[] args) {
         //CONTROLADOR PRINCIPAL
         controlador = controllerSingleton.getController();
-        controlador.setArmaDefault(controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA));
+        controlador.setArmaDefault(controlador.getFactoryWeapons().FabricarWeapon("Default",1,5,1,1,1, EnumWeapons.BLANCA));
         /*for(String nombre:controlador.personajesJSON()){
             System.out.println(nombre);
         }*/
@@ -27,7 +27,7 @@ public class MainController {
         //TURNOS
         turnoMain = true;
         controlador.setTurno(true);
-        aWeapon arma = controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA);
+        //aWeapon arma = controlador.getFactoryWeapons().FabricarWeapon("Katana",1,5,1,1,1, EnumWeapons.BLANCA);
         //ADD 2 PJ
         /*
         Character nuevoCharacter = new Character.BuilderCharacter().setName("Witch")

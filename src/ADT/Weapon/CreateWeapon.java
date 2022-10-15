@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 
 public class CreateWeapon extends JDialog{
@@ -32,7 +33,11 @@ public class CreateWeapon extends JDialog{
         cbTipo.setModel(new DefaultComboBoxModel<>(EnumWeapons.values()));
 
         for (String name : MainController.controlador.armasJSON()){
-            nameComboBox.addItem(name);
+            if(!Objects.equals(name, "Default")){
+                nameComboBox.addItem(name);
+            }
+
+
         }
         createButton.addActionListener(new ActionListener() {
             @Override

@@ -7,6 +7,18 @@
       "MOVE": ".\\src\\CharacterAppearance\\caballero1Move.png",
       "ATTACK": ".\\src\\CharacterAppearance\\caballero1Attack.png",
       "DEAD": ".\\src\\CharacterAppearance\\caballero1Dead.png"
+    },
+    "2":{
+      "DEFAULT": ".\\src\\CharacterAppearance\\caballero1Default.png",
+      "MOVE": ".\\src\\CharacterAppearance\\caballero1Move.png",
+      "ATTACK": ".\\src\\CharacterAppearance\\caballero1Attack.png",
+      "DEAD": ".\\src\\CharacterAppearance\\caballero1Dead.png"
+    },
+    "3":{
+      "DEFAULT": ".\\src\\CharacterAppearance\\caballero1Default.png",
+      "MOVE": ".\\src\\CharacterAppearance\\caballero1Move.png",
+      "ATTACK": ".\\src\\CharacterAppearance\\caballero1Attack.png",
+      "DEAD": ".\\src\\CharacterAppearance\\caballero1Dead.png"
     }
 
   },
@@ -22,6 +34,12 @@
   "Witch": {
 
     "1": {
+      "DEFAULT": ".\\src\\CharacterAppearance\\witch1Default.png",
+      "MOVE": ".\\src\\CharacterAppearance\\witch1Move.png",
+      "ATTACK": ".\\src\\CharacterAppearance\\witch1Attack.png",
+      "DEAD": ".\\src\\CharacterAppearance\\witch1Dead.png"
+    },
+    "2": {
       "DEFAULT": ".\\src\\CharacterAppearance\\witch1Default.png",
       "MOVE": ".\\src\\CharacterAppearance\\witch1Move.png",
       "ATTACK": ".\\src\\CharacterAppearance\\witch1Attack.png",

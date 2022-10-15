@@ -134,6 +134,30 @@ public class controllerSingleton {
         ArrayList<String> nombres = new ArrayList<>(lista.keySet());
         return nombres;
     }
+
+    public ArrayList<String> nivelesJSON(String nombre){
+
+        JSONParser jsonParser = parser;
+        FileReader lector;
+        try {
+            lector = new FileReader(".\\src\\ImagenesPersonaje.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject lista;
+        try {
+
+            lista = (JSONObject) jsonParser.parse(lector);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        JSONObject personaje =  (JSONObject) lista.get(nombre);
+        ArrayList<String> niveles = new ArrayList<>(personaje.keySet());
+        return niveles;
+    }
+
     //Armas posibles
     public ArrayList<String> armasJSON(){
 
