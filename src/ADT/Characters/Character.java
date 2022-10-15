@@ -8,7 +8,6 @@ import ADT.IPrototype;
 import ADT.State;
 import ADT.Weapon.aWeapon;
 import org.json.simple.parser.ParseException;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,19 +19,15 @@ public class Character implements IPrototype<Character> {
     protected int campos;
     protected int nivelAparicion;
     protected int costo;
-
     protected ArrayList<aWeapon> armas;
     protected Image imagen;
     protected int posX;
     protected int posY;
-
-    protected aTipo tipo;
-
+    protected aTipo tipo; //REFERENCIA A COMPORTAMIENTO X TIPO
     protected State estado;
 
-    public Character() {
+    public Character() { }
 
-    }
     public Character (String nombre, double vida, int nivel, int campos, int nivelAparicion,
                       int costo, ArrayList<aWeapon> weapons,aTipo tipo,State estado,Image imagen,
                       int posX, int posY)  {
@@ -50,16 +45,7 @@ public class Character implements IPrototype<Character> {
         this.imagen = imagen;
     }
 
-
-
-
-    public void updateImagen() {
-        String url = controllerSingleton.getController().datos(this.nombre, this.nivel, this.estado);
-        this.imagen = controllerSingleton.getController().getImage(url);
-    }
-
-
-
+    //PROTOTYPE-------------------------------------------------------------------------------------------------------
     @Override
     public Character clone() {
         return new Character(this.nombre,this.vida, this.nivel,this.campos,
@@ -78,62 +64,33 @@ public class Character implements IPrototype<Character> {
 
     }
 
-    public String getNombre(){
-        return nombre;
+    public void updateImagen() {
+        String url = controllerSingleton.getController().datos(this.nombre, this.nivel, this.estado);
+        this.imagen = controllerSingleton.getController().getImage(url);
     }
+    public String getNombre(){return nombre; }
     public Image getImagen(){return imagen;}
     public int getPosX(){return posX;}
     public int getPosY(){return posY;}
-    //public aTipo getTipo(){return tipo;}
     public double getVida(){return vida;}
-    //public ArrayList<aWeapon> getArmas(){return armas;}
+    public int getNivel() {return nivel;}
+    public int getCampos() {return campos;}
+    public int getNivelAparicion() {return nivelAparicion;}
+    public int getCosto() {return costo;}
+    public ArrayList<aWeapon> getArmas() {return armas;}
+    public aTipo getTipo() {return tipo;}
+    public State getEstado() {return estado;}
+    public aWeapon getWeaponIndex(int index) {return this.getArmas().get(index);}
 
     public void setPos (int x, int y){
         this.posX = x;
         this.posY = y;
     }
-    public void setVida (int puntos){
-        this.vida = this.vida - puntos;
-    }
-
-    public void setEstado (State estado){
-        this.estado = estado;
-    }
+    public void setVida (int puntos) {this.vida = this.vida - puntos;}
+    public void setEstado (State estado){this.estado = estado;}
 
 
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public int getCampos() {
-        return campos;
-    }
-
-    public int getNivelAparicion() {
-        return nivelAparicion;
-    }
-
-    public int getCosto() {
-        return costo;
-    }
-
-    public ArrayList<aWeapon> getArmas() {
-        return armas;
-    }
-
-    public aTipo getTipo() {
-        return tipo;
-    }
-
-    public State getEstado() {
-        return estado;
-    }
-
-    public aWeapon getWeaponIndex(int index) {
-        return this.getArmas().get(index);
-    }
-
+    //CHARACTER BUILDER------------------------------------------------------------------------
     public static class BuilderCharacter implements IBuilder<Character> {
         private String nombre;
         private double vida;
@@ -141,12 +98,10 @@ public class Character implements IPrototype<Character> {
         private int campos;
         private int nivelAparicion;
         private int costo;
-
         protected ArrayList<aWeapon> armas = new ArrayList<>();
         private Image imagen;
         private int posX;
         private int posY;
-
         private aTipo tipo;
         private State estado;
 
@@ -157,6 +112,8 @@ public class Character implements IPrototype<Character> {
             this.posY = y;
             return this;
         }
+
+        //SETS
         public BuilderCharacter setName(String name){
             this.nombre = name;
             return this;
@@ -193,7 +150,6 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
-
         public BuilderCharacter setTipo (EnumCharacters type){
             //clone arma
             this.tipo = MainController.controlador.getFactoryTypes().createType(type);
@@ -205,20 +161,16 @@ public class Character implements IPrototype<Character> {
             return this;
         }
 
-
         public BuilderCharacter setImagen(){
             String url = controllerSingleton.getController().datos(this.nombre, this.nivel, this.estado);
             this.imagen = controllerSingleton.getController().getImage(url);
             return this;
         }
 
-
-
         @Override
         public Character build(){
             return new Character(nombre, vida, nivel, campos, nivelAparicion, costo, armas,tipo,estado,imagen, posX,posY);
         }
-
 
     }
 }

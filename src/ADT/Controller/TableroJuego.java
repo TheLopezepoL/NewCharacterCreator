@@ -69,8 +69,6 @@ public class TableroJuego extends JDialog {
                     botonesTablero[r][c].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            System.out.println("Main");
-                            consola.append("\nMain");
                             MainController.turnoMain = false;
                             window.invalidate();
                             window.validate();
@@ -106,11 +104,13 @@ public class TableroJuego extends JDialog {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             Character mainPj = MainController.controlador.getMainCharacter();
+
                             int oldX = mainPj.getPosX();
                             int oldY = mainPj.getPosY();
                             int newX = (Integer)(((JButton)e.getSource()).getClientProperty( "x" ));
                             int newY = (Integer)(((JButton)e.getSource()).getClientProperty( "y" ));
                             if (MainController.controlador.getMainCharacter().getTipo().moverse(mainPj,newX,newY)){
+                                System.out.println("SE MUEVE");
                                 MainController.controlador.refreshMatriz(MainController.controlador.getMainCharacter(),oldX,oldY);
                             }
 

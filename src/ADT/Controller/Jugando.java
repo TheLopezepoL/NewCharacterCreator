@@ -13,11 +13,13 @@ public class Jugando extends Thread {
     public void run(){
         MainController.jugando = true;
         ArrayList<Character> enemigos = MainController.controlador.getEnemigos();
-
+        System.out.println("---------------INICIA EL JUEGO------------------------");
         while(MainController.jugando){
-            //TRUNO DEL MAIN CHARACTER
+            //TRUNO DEL MAIN CHARACTEr
             if (MainController.controlador.getTurno()){
                 MainController.turnoMain = true;
+                System.out.println("\n------------------------------------------------");
+                System.out.println("TURNO MAIN CARCATER!");
                 JOptionPane.showMessageDialog(null, "Su turno");
                 while(MainController.turnoMain){
                     //ESPERA A ATACAR O MOVERSE
@@ -33,7 +35,7 @@ public class Jugando extends Thread {
             else{
                 for (int i=0; i<enemigos.size(); i++){
                     JOptionPane.showMessageDialog(null, "Turno Enemigo "+i);
-                    System.out.println("--------------------------------------------------------");
+                    System.out.println("\n--------------------------------------------------------");
                     System.out.println("Turno Enemigo "+i);
                     Character enemigo = enemigos.get(i);
                     if (enemigo.getVida() <= 0){
@@ -43,9 +45,10 @@ public class Jugando extends Thread {
                         //ATACA O SE MUEVE
                         int movimiento = (int)(Math.random()*10+1);
                         if (movimiento <= 5 && moverseAux(enemigo)){
-                            System.out.println("MOVERSE");
+                            System.out.println("**ENEMIGO SE MUEVE**");
                         }
                         else{
+                            System.out.println("**ENEMIGO ATACA**");
                             enemigo.getTipo().atacar(enemigo,MainController.controlador.getMainCharacter());
                         }
                         TableroJuego.cargarTablero();

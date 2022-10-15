@@ -12,20 +12,22 @@ public class tipoTerrestre extends aTipo{
     public  int atacar(Character infoCharacter, Character enemigo){
         double vidaAnterior = enemigo.vida;
         System.out.println("Ataca a "+enemigo.nombre +" Vida Anterior: " +vidaAnterior);
+        System.out.println("Personaje Terrestre: Habilidad ---");
 
         int danho = 0;
         double distancia =  Math.sqrt((infoCharacter.posY - enemigo.posY) * (infoCharacter.posY - enemigo.posY) + (enemigo.posX - infoCharacter.posX) * (enemigo.posX - infoCharacter.posX));
         int aux = (int)distancia;
-        System.out.println(aux);
 
         for (aWeapon arma : infoCharacter.getArmas()){
             if (arma.activo){
                 if (arma.alcance >= aux){
-                    danho+=arma.danho;
-                    System.out.println("\tArma: "+arma.nombre +"\tDaño causado: "+ arma.danho);
+                    danho+=arma.utilizar();
+                    System.out.println("\tArma: "+arma.nombre +
+                                    "\tTipo: "+arma.tipo+
+                            "Alcance: "+arma.alcance+"\tDaño causado: "+ arma.utilizar());
                 }
                 else{
-                    System.out.println("\tArma: "+arma.nombre +"\tFuera de Alcance");
+                    System.out.println("\tArma: "+arma.nombre +"\tAlcance: "+arma.alcance+"\tFuera de Alcance");
                 }
 
             }
@@ -44,8 +46,6 @@ public class tipoTerrestre extends aTipo{
     public Boolean moverse(Character infoCharacter, int x, int y){
         infoCharacter.posX =  x;
         infoCharacter.posY =  y;
-        System.out.println("Moverse");
-        System.out.println(x+" "+y);
         return true;
     }
 }

@@ -24,12 +24,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class controllerSingleton {
-    //static reference to the single object
-    private static controllerSingleton myController;
+    private static controllerSingleton myController; //static reference to the single object
 
     //FACTORY----------------------------------
     private WeaponFactory factoryWeapons;
     private TypesFactory factoryTypes;
+
     private ArrayList <Character> generated_characters;
     private Character mainCharacter;
     private ArrayList <Character> enemigos;
@@ -37,9 +37,7 @@ public class controllerSingleton {
     private ArrayList <aWeapon> base_weapons;
     private aWeapon armaDefault;
     private Boolean turno;
-
-
-
+    //IMAGENES
     private static JSONParser parser;
     private static JSONParser parserArmas;
 
@@ -70,6 +68,7 @@ public class controllerSingleton {
         }
         return myController;
     }
+
     public Character getMainCharacter(){return mainCharacter;}
     public Boolean getTurno(){return turno;}
     public void setTurno(Boolean act){
@@ -101,11 +100,9 @@ public class controllerSingleton {
     public  ArrayList <aWeapon>  getBaseWeapons(){
         return base_weapons;
     }
-
     public java.util.ArrayList<Character> getBaseCharacters() {
         return base_characters;
     }
-
     public java.util.ArrayList<Character> getGeneratedCharacters() {
         return generated_characters;
     }

@@ -73,8 +73,14 @@ public class Menu extends JDialog{
             @Override
 
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                CharacterSelection seleccion = new CharacterSelection(null);
+                if (MainController.controlador.getBaseCharacters().size() == 0){
+                    JOptionPane.showMessageDialog(null, "Debe crear personaje antes de jugar");
+                }
+                else{
+                    dispose();
+                    CharacterSelection seleccion = new CharacterSelection(null);
+                }
+
                 }
         });
 
